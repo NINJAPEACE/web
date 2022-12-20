@@ -284,3 +284,15 @@ span {
     right: 0;
   }
 }
+
+.easter {
+  display:inline-block;
+  z-index:2;
+  background:#3D3D3D;
+  color:#eee;
+  font-weight: 600;
+  padding:20px;
+  text-align: center;
+  
+  border-radius: 10%;
+}
