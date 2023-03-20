@@ -35,7 +35,8 @@ body {
   width: 100%;
   height: 100%;
   min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./TvuM20.jpg");
+  background: linear-gradient(135deg, #161616, #323338);
+  /*#100E11, #10112F, #2F2F31);*/
   background-size: cover;
   background-position: center;
   position: relative;
@@ -48,6 +49,7 @@ header {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  width:100%;
 }
 
 .logo img {
@@ -75,10 +77,12 @@ nav .hamb {
   position: absolute;
   cursor: pointer;
   display: none;
+  float:right;
 }
 
 nav .nav-list {
   list-style: none;
+  width:100%;
 }
 
 nav .nav-list li {
@@ -146,6 +150,11 @@ nav .nav-list li.round a {
   color: #eee;
   font-weight: 400;
   font-size: 17px;
+}
+
+.container .hero-text h2 {
+  color:#eee;
+  font-weight: 500;
 }
 
 .container .hero-text p {
@@ -288,4 +297,59 @@ nav .nav-list li.round a {
 
 .pagination span.active {
   transform:scale(1.5);
+}
+
+.form-contact input {
+  outline:none;
+  border:none;
+  border-radius: 15px;
+  padding:8px;
+}
+
+.type-message {
+  outline:none;
+}
+
+.form-contact label {
+}
+
+.home-nav-btn {
+  display: inline-block;
+  background: transparent;
+  border: 2px solid var(--main-color);
+  padding: 12px 28px;
+  border-radius: 30px;
+  color:var(--main-color);
+  line-height: 1.3;
+  font-weight: 500;
+  position:absolute;
+  bottom:10%;
+  left:10%;
+}
+
+.home-nav-btn:hover {
+  transform: scale(1.1);
+  color:white;
+  border-color: white;
+  transition: .4s;
+}
+
+.block-item {
+  width:17rem;
+  height:17rem;
+  border-radius: 50px;
+  background-color: #454545;
+  transform:rotate(35deg) translateX(125px) translateY(-200px);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.round-item {
+  width:15rem;
+  height:15rem;
+  border-radius: 50%;
+  background-color: #313131;
+  position:absolute;
+  z-index:-1;
+  transform:translateX(-175px) translateY(-200px);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
