@@ -26,7 +26,7 @@ var current = { index: 1, page: document.querySelector(".one") };
 
 document.querySelector(".one").setAttribute("status", "active")
 
-swiper.on("slideChangeTransitionEnd", function() {
+swiper.on("slideChange", function() {
 
   let arr = {
     "1": "one",
@@ -46,4 +46,10 @@ swiper.on("slideChangeTransitionEnd", function() {
 
   page.setAttribute("status", "active");
   current = { index: swiper.activeIndex, page: page };
+  
+  document.querySelectorAll(".item").forEach(e => e.removeAttribute("s"));
+});
+
+swiper.on("sliderMove", function(swiper, event) {
+  document.querySelectorAll(".item").forEach(e => e.setAttribute("s", "onchange"));
 });
