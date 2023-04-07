@@ -26,30 +26,34 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="swiper.css">
+  <script src="swiper.js"></script>
+  <link rel="stylesheet" href="swiper.css" />
+  <!--
+  <link rel="stylesheet" href="swiper.css">-->
 </head>
 
 <body>
 
   <section class="hero swiper">
+    <div class="round-item item">
+      &nbsp;
+    </div>
+
+    <div class="block-item item">
+      &nbsp;
+    </div>
+
+    <img class="logo html item" src="html.png" />
+    <img class="logo css item" src="css.png" />
+    <img class="logo vue item" src="vuejs.png" />
+    <img src="" />
+
+    <div class="home-nav-btn">
+      <i class="fa-solid fa-backward"></i>
+    </div>
     <div class="swiper-wrapper">
 
-      <div class="round-item item">
-        &nbsp;
-      </div>
-
-      <div class="block-item item">
-        &nbsp;
-      </div>
-
-      <img class="logo html item" src="html.png" />
-      <img class="logo css item" src="css.png" />
-      <img class="logo vue item" src="vuejs.png" />
-      <img src="" />
-      
-      <div class="home-nav-btn">
-        <i class="fa-solid fa-backward"></i>
-      </div>
+      <!---->
 
 
 
@@ -115,41 +119,11 @@
 
         <div class="container">
           <div class="hero-text">
-            <h2>My Projects</h2>
+            <h2>Feeds</h2>
             <div>
-
-              <div class="project">
-
-                <div class="project-block">
-                  <div class="p-title">Simple Hit Game (Github)</div>
-                  <div class="p-desc">lorem ipsim dolor sit amet consetectur adispiscing elit.</div>
-                  <div class="p-status">
-                    Status: On contribution
-                  </div>
-                </div>
-              </div>
-
-              <div class="project">
-                <span class="project-status">&nbsp;</span>
-                <div class="project-block">
-                  <div class="p-title">Simple Hit Game (Github)</div>
-                  <div class="p-desc">lorem ipsim dolor sit amet consetectur adispiscing elit.</div>
-                  <div class="p-status">
-                    Status: On contribution
-                  </div>
-                </div>
-              </div>
-
-              <div class="view-project" href="#">
-                View all projects...
-              </div>
-
+              <span></span>
             </div>
           </div>
-        </div>
-
-        <div class="home-nav-btn">
-          <i class="fa-solid fa-backward"></i>
         </div>
 
       </div>
@@ -166,71 +140,41 @@
 
         <div class="container">
           <div class="hero-text">
-            <h2>Feeds</h2>
-            <div>
-              <span></span>
-            </div>
+            <h2>Contact Me</h2>
+            <h3>You can contact me on my social media or with send me a private message here:</h3>
+            <button class="send-message">Send Message</button>
+            <!--<form>
+              <ul class="form-contact">
+                <li>
+                  <label>
+                    Username
+                    <span class="required">*</span>
+                    </label>
+                    <input type="text" name="field1" class="field-long" placeholder="First" />
+                </li>
+                <li>
+                  <label>Subject</label>
+                  <select name="field4" class="field-select">
+                    <option value="Advertise">Advertise</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="General Question">General</option>
+                  </select>
+                </li>
+                <li>
+                  <label>Your Message <span class="required">*</span></label>
+                  <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                </li>
+                <li>
+                  <input type="submit" value="Submit" />
+                </li>
+              </ul>
+            </form>-->
           </div>
-        </div>
-
-        <div class="home-nav-btn">
-          <i class="fa-solid fa-backward"></i>
         </div>
 
       </div>
 
       <div class="main-width swiper-slide five">
-        <header>
-          <nav>
-            <ul class="nav-list">
-              <li class="btn"><a></a></li>
-              <li class="btn round"><a></a></li>
-            </ul>
-          </nav>
-        </header>
-
-        <div class="container">
-          <div class="hero-text">
-            <h2>Contact Me</h2>
-            <form class="form-contact">
-
-              <label>
-                <span>Name</span><br>
-                <input>
-              </label>
-
-              <label>
-                <span>Message</span><br>
-                <input>
-              </label>
-
-              <label>
-                <span>
-                  Email / Social Media (optional)</span><br>
-                <input>
-              </label>
-              <label>
-                Type of Message
-                <select class="type-message">
-                  <option value="null">Select</option>
-                  <option value="first">First Value</option>
-                  <option value="second">Second Value</option>
-                  <option value="third">Third Value</option>
-                </select>
-              </label>
-
-              <span>Select the type of message that you sent. </span>
-            </form>
-          </div>
-        </div>
-
-        <div class="home-nav-btn">
-          <i class="fa-solid fa-backward"></i>
-        </div>
-
-      </div>
-
-      <div class="main-width swiper-slide six">
         <div class="container">
           <div class="hero-text">
             <h1>Special thanks to:</h1>
@@ -248,10 +192,6 @@
           </div>
         </div>
 
-        <div class="home-nav-btn">
-          <i class="fa-solid fa-backward"></i>
-        </div>
-
       </div>
 
     </div>
@@ -261,7 +201,7 @@
 
   <!-- Project -->
 
-  <script src="swiper.js"></script>
+  <!--<script src="swiper.js"></script>-->
   <script src="main.js"></script>
 
 </body>
