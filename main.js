@@ -1,4 +1,5 @@
 var swiper;
+var current;
 
 function swipeActive() {
   swiper = new Swiper(".swiper", {
@@ -16,7 +17,7 @@ function swipeActive() {
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
-    }, 
+    },
     on: {
       slideChange: (s) => {
         let arr = {
@@ -26,60 +27,58 @@ function swipeActive() {
           "3": "four",
           "4": "five"
         }
-        
-        let page = document.querySelector(`.${arr[s.realIndex]}`);
 
-        //removing the latest page
-        if (current.index !== s.realIndex) {
-          current.page.removeAttribute("status");
+        let index = arr[s.realIndex];
+        //console.log(current)
+
+        let page = document.querySelector(`.${index}`);
+        
+        //console.log(current.page.getAttribute("status"))
+
+        if (current.index !== s.realIndex) current.page.removeAttribute("status");
+        page.setAttribute("status", "active");
+        
+        //console.log(current.page.getAttribute("status"))
+
+        current = { index: s.realIndex, page: page };
+
+        let elList = [
+          { el: "block-item", add: "item", on: ["one", "two"] },
+          { el: "round-item", add: "item", on: ["one", "two"] },
+          { el: "logos", add: "item", on: ["one", "two"], timer: { on: "two", time: 200 } }
+          ]
+
+        for (xy of elList) {
+          if (xy.on.includes(index)) {
+            addClass(xy, index);
+          }
         }
         
-        page.setAttribute("status", "active");
-        current = { index: s.realIndex, page: page };
       }
     }
   });
 }
 
-swipeActive();
+function addClass(a, b) {
+  if (a.timer?.on == b) {
+    setTimeout(() => {
+      addTo();
+    }, a.timer.time)
+  } else addTo();
 
-var current = { index: 0, page: document.querySelector(".one") };
-
-document.querySelector(".one").setAttribute("status", "active")
-
-/*
-swiper.on("slideChange", function() {
-  
-  console.log(swiper.activeIndex)
-  
-  let index = swiper.activeIndex == 0 ? 6 : swiper.activeIndex == 7 ? 1 : swiper.activeIndex;
-
-  let arr = {
-    "0": "one",
-    "1": "two",
-    "2": "three",
-    "3": "four",
-    "4": "five",
-    "5": "six"
+  function addTo() {
+    document.querySelector(`.${a.el}`).className = `${a.el} ${a.add} ${b}`;
   }
+}
 
-  let page = document.querySelector(`.${arr[index]}`);
+window.onload = () => {
+  swipeActive();
 
-  //removing the latest page
-  if (current.index !== index) {
-    current.page.removeAttribute("status");
-  }
+  current = { index: 0, page: document.querySelector(".one") };
 
-  page.setAttribute("status", "active");
-  current = { index: index, page: page };
+  document.querySelector(".one").setAttribute("status", "active");
 
-  setTimeout(() => {
-    document.querySelectorAll(".item").forEach(e => e.removeAttribute("s"));
-  }, 500);
-});
-
-swiper.on("sliderMove", function(swiper, event) {
-  document.querySelectorAll(".item").forEach(e => e.setAttribute("s", "onchange"));
-});*/
-
-//alert("WARNING! \n\nThis Website is currently under development, all features here hasn't responsible by the developer.");
+  document.querySelectorAll(".item").forEach(e => {
+    e.classList.add("one");
+  });
+}

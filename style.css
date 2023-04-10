@@ -195,16 +195,21 @@ nav .nav-list li.btn:hover a {
   height: 17rem;
   border-radius: 50px;
   background-color: #454545;
-  transform:translateX(15rem) translateY(30rem) rotate(38deg);
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  position: absolute;
-  transition: .5s;
+  transition: .8s;
   z-index: -1;
+  visibility:none;
   animation:block 1s ease;
 }
 
-.block-item[s="onchange"] {
+.block-item.one {
+  transform:translateX(15rem) translateY(30rem) rotate(38deg);
+  position:absolute;
+}
 
+.block-item.two {
+  position:absolute;
+  transform:translateX(-5rem) translateY(40rem) rotate(218deg);
 }
 
 .round-item {
@@ -212,21 +217,31 @@ nav .nav-list li.btn:hover a {
   height: 15rem;
   border-radius: 50%;
   background-color: #313131;
-  position: absolute;
-  transform:translateX(-7rem) translateY(-3rem);
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   transition:.5s;
   z-index:-1;
   animation:round 1s ease;
 }
 
-.round-item[s="onchange"] {
+.round-item.one {
+  position: absolute;
+  transform:translateX(-7rem) translateY(-3rem);
+}
+
+.round-item.two {
+  position: absolute;
+  transform:translateX(-17rem) translateY(-5rem);
 }
 
 .hero-text .hero-list {
   color: white;
   text-decoration: none;
   padding: 10px 17px;
+  width: 370px;
+  max-width: 100%;
+  color: #eee;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .logo {
@@ -234,59 +249,30 @@ nav .nav-list li.btn:hover a {
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   filter: grayscale(20%);
   -webkit-filter: grayscale(20%);
-  position: absolute;
+  transition:.8s;
+  z-index:-2;
+}
+
+.logos {
+  display:flex;
+  column-gap:0;
+  transform:rotate(40deg);
+  position:absolute;
+  top:40rem;
+  left:-7rem;
   transition:.5s;
+  z-index:-2;
+  visibility:hidden;
 }
 
-/*
-.logo[s="onchange"] {
-  transform: rotate(38deg) translateX(1000px) translateY(100px);
+.logos.one {
+  visibility:hidden;
 }
 
-.html {
-  transform: rotate(38deg) translateX(1000px) translateY(-150px);
-}
-
-.css {
-  transform: rotate(38deg) translateX(1055px) translateY(-150px);
-}
-
-.vue {
-  transform: rotate(38deg) translateX(1110px) translateY(-150px);
-}*/
-
-.project-block {
-  padding: 18px;
-  color: white;
-  background: linear-gradient(rgba(91, 91, 91, 0.92), rgba(43, 43, 43, 0.92));
-  background-color: black;
-  border-radius: 17px;
-  opacity: .7;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  margin-top: .8rem;
-  backdrop-filter: blur(3rem);
-  z-index: 5;
-}
-
-.p-title {
-  font-weight: 600;
-}
-
-.p-status {
-  font-size: var(--subtitle-size);
-}
-
-.view-project {
-  color: #FBFBFB;
-  opacity: .7;
-  margin: 5px;
-  padding: 15px;
-}
-
-.view-project:hover {
-  opacity: .9;
-  transform: scale(1.01);
-  transition: .5s;
+.logos.two {
+  visibility:visible;
+  column-gap:1.5rem;
+  transform:translateX(12.3rem) rotate(40deg);
 }
 
 /* ANIMATION */
@@ -294,7 +280,7 @@ nav .nav-list li.btn:hover a {
   animation: up 1s ease;
   visibility: visible;
 }
-
+/*
 .one[status="active"] .round-item {
   visibility: visible;
   animation: round 1s ease;
@@ -303,21 +289,11 @@ nav .nav-list li.btn:hover a {
 .one[status="active"] .block-item {
   visibility: visible;
   animation: block 1s ease;
-}
+}*/
 
 .two[status="active"] .hero-text {
   visibility: visible;
   animation: up 1s ease;
-}
-
-.two[status="active"] .block-item {
-  visibility: visible;
-  animation: block 1s ease;
-}
-
-.two[status="active"] .logo {
-  visibility: visible;
-  animation: blockLeft 1s ease;
 }
 
 .three[status="active"] .hero-text {
@@ -527,4 +503,15 @@ select{
   transform:scale(1.1);
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   background:var(--main-color);
+}
+
+.thanks-list {
+  color:white !important;
+  text-decoration: none;
+  padding:20px 20px 20px 15px;
+}
+
+.thanks-list li a {
+  color:white !important;
+  line-height: 1.5;
 }
