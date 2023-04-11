@@ -19,7 +19,7 @@ function swipeActive() {
       prevEl: ".swiper-button-prev",
     },
     on: {
-      slideChange: (s) => {
+      realIndexChange: (s) => {
         let arr = {
           "0": "one",
           "1": "two",
@@ -29,16 +29,11 @@ function swipeActive() {
         }
 
         let index = arr[s.realIndex];
-        //console.log(current)
 
-        let page = document.querySelector(`.${index}`);
-        
-        //console.log(current.page.getAttribute("status"))
+        let page = document.querySelector(`.swiper-slide.${index}`);
 
         if (current.index !== s.realIndex) current.page.removeAttribute("status");
         page.setAttribute("status", "active");
-        
-        //console.log(current.page.getAttribute("status"))
 
         current = { index: s.realIndex, page: page };
 
@@ -53,7 +48,7 @@ function swipeActive() {
             addClass(xy, index);
           }
         }
-        
+
       }
     }
   });
@@ -81,4 +76,8 @@ window.onload = () => {
   document.querySelectorAll(".item").forEach(e => {
     e.classList.add("one");
   });
+  
+  setTimeout(() => {
+    document.body.className = null;
+  }, 1000);
 }
