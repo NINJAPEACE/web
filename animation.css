@@ -1,17 +1,17 @@
 /* BLOCK ITEM */
 .block-item.one {
-  transform: translateX(15rem) translateY(30rem) rotate(38deg);
+  transform: translateX(100%) translateY(160%) rotate(38deg);
   position: absolute;
 }
 
 .block-item.two {
   position: absolute;
-  transform: translateX(-5rem) translateY(40rem) rotate(218deg);
+  transform: translateX(-35%) translateY(230%) rotate(218deg);
 }
 
 .block-item.three.next {
   position: absolute;
-  transform: translateX(-100%) translateY(40rem) rotate(0);
+  transform: translateX(-100%) translateY(230%) rotate(0);
 }
 
 .block-item.three.prev {
@@ -32,12 +32,12 @@
 /* ROUND ITEM */
 .round-item.one {
   position: absolute;
-  transform: translateX(-7rem) translateY(-3rem);
+  transform: translateX(-35%) translateY(-25%);
 }
 
 .round-item.two {
   position: absolute;
-  transform: translateX(-17rem) translateY(-5rem);
+  transform: translateX(-100%) translateY(-50%);
 }
 
 .round-item.two.prev {
@@ -79,7 +79,7 @@
 
 .triangle-item.five.next {
   position: absolute;
-  transform: translateX(-150%);
+  transform: translateX(-150%) rotate(-270deg);
 }
 
 .triangle-item.five.prev {

@@ -1,11 +1,13 @@
 var swiper;
 var current;
 
+var swiperDetails = {};
+
 function swipeActive() {
   swiper = new Swiper(".swiper", {
     slidesPerView: 1,
     spaceBetween: 25,
-    loop: true,
+    loop: false,
     centerSlide: 'true',
     fade: 'true',
     grabCursor: 'true',
@@ -13,10 +15,6 @@ function swipeActive() {
       el: ".swiper-pagination",
       clickable: true,
       dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
     },
     on: {
       realIndexChange: (s) => {
@@ -29,8 +27,6 @@ function swipeActive() {
         }
 
         let index = arr[s.realIndex];
-        
-        //console.log(s.swipeDirection)
 
         let page = document.querySelector(`.swiper-slide.${index}`);
 
@@ -39,27 +35,41 @@ function swipeActive() {
 
         current = { index: s.realIndex, page: page };
 
-        let elList = [
-          { el: "block-item", add: "item", on: ["one", "two", "three", "five"] },
-          { el: "round-item", add: "item", on: ["one", "two", "five"] },
-          { el: "triangle-item", add: "item", on: ["one", "two", "three", "four", "five"] },
-          { el: "logos", add: "item", on: ["one", "two", "three"], timer: { on: ["two"], time: 200 } },
-          { el: "spotify", add: " contact item", on: ["three", "four", "five"] },
-          { el: "instagram", add: "contact item", on: ["three", "four", "five"], timer: { on: ["three", "four", "five"], time: 100 } },
-          { el: "github", add: "contact item", on: ["three", "four", "five"], timer: { on: ["three", "four", "five"], time: 200 } },
-          { el: "youtube", add: "contact item", on: ["three", "four", "five"], timer: { on: ["three", "four", "five"], time: 300 } },
-          { el: "discord", add: "contact item", on: ["three", "four", "five"], timer: { on: ["three", "four", "five"], time: 400 } },
-          ]
 
-        for (xy of elList) {
-          if (xy.on.includes(index)) {
-            addClass(xy, index, s.swipeDirection);
-          }
-        }
+
+        /* let elList = [
+           { el: "block-item", add: "item", on: ["one", "two", "three", "five"] },
+           { el: "round-item", add: "item", on: ["one", "two", "five"] },
+           { el: "triangle-item", add: "item", on: ["one", "two", "three", "four", "five"] },
+           { el: "logos", add: "item", on: ["one", "two", "three"], timer: { on: ["two"], time: 200 } }
+           ]
+
+         for (xy of elList) {
+           if (xy.on.includes(index)) {
+             addClass(xy, index, s.swipeDirection);
+           }
+         }*/
 
       }
     }
   });
+
+  for (swipePage of ["skills", "work"]) {
+    swiperDetails[swipePage] = new Swiper(`.swiper-container-${swipePage}`, {
+      slidesPerView: 1,
+      spaceBetween: 25,
+      direction: "vertical",
+      loop: false,
+      centerSlide: 'true',
+      fade: 'true',
+      grabCursor: 'true',
+      pagination: {
+        el: `.swiper-container-${swipePage} .swiper-pagination-vertical`,
+        clickable: true,
+        dynamicBullets: true,
+      }
+    });
+  }
 }
 
 function addClass(a, b, c) {
@@ -84,8 +94,12 @@ window.onload = () => {
   document.querySelectorAll(".item").forEach(e => {
     e.classList.add("one");
   });
-  
+
   setTimeout(() => {
     document.body.className = null;
   }, 1000);
+}
+
+function skillButton() {
+  document.querySelector(".swiper-container-v1").style.display = "block";
 }

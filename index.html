@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/poppins.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Modules -->
@@ -55,33 +56,10 @@
       <img class="logo vue" src="/assets/vue.png" alt="VueJS Logo" />
     </div>
 
-    <div class="contact-wrapper">
-      <div class="contact-parent">
-        <img src="/assets/spotify.png" alt="" class="contact item spotify">
-        <img src="/assets/instagram.png" alt="" class="contact item instagram">
-        <img src="/assets/github.png" alt="" class="contact item github">
-      </div>
-      <div class="contact-parent">
-        <img src="/assets/youtube.png" alt="" class="contact item youtube">
-        <img src="/assets/discord.png" alt="" class="contact item discord">
-      </div>
-    </div>
-    <!--
-    <div class="home-nav-btn">
-      <i class="fa-solid fa-backward"></i>
-    </div>
-    -->
     <div class="swiper-wrapper">
 
+      <!-- MAIN SLIDE -->
       <div class="main-width swiper-slide one">
-        <header>
-          <nav>
-            <ul class="nav-list">
-              <li class="btn"><a></a></li>
-              <li class="btn round"><a></a></li>
-            </ul>
-          </nav>
-        </header>
         <div class="container">
           <div class="hero-text">
             <h3>Hi, there!</h3>
@@ -93,118 +71,193 @@
               <a href="#"><i class="fa-brands fa-github"></i></a>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="main-width swiper-slide two">
-        <header>
-          <nav>
-            <ul class="nav-list">
-              <li class="btn"><a></a></li>
-              <li class="btn round"><a></a></li>
-            </ul>
-          </nav>
-        </header>
-        <div class="container">
           <div class="hero-text">
-            <h2>Skills & Experiences</h2>
-            <p>
-            <ul class="hero-list">
-              <li>HTML, CSS, JS</li>
-              <li>NodeJS</li>
-              <li>VueJS</li>
-              <li>Discord Bot Developer</li>
-              <li>Web Designer</li>
-            </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="main-width swiper-slide three">
-        <header>
-          <nav>
-            <ul class="nav-list">
-              <li class="btn"><a></a></li>
-              <li class="btn round"><a></a></li>
-            </ul>
-          </nav>
-        </header>
-        <div class="container">
-          <div class="hero-text">
-            <h2>Feeds</h2>
-            <div>
-              <span></span>
+            <h4>Choose your way to know me more</h4>
+            <div class="navigate-button">
+              <div class="personal-button" onclick="swiper.slidePrev()">
+                <i class="fa-solid fa-chevron-left"></i>
+                Personal
+              </div>
+              <div class="professional-button" onclick="swiper.slideNext()">
+                Professional
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="main-width swiper-slide four">
-        <header>
-          <nav>
-            <ul class="nav-list">
-              <li class="btn"><a></a></li>
-              <li class="btn round"><a></a></li>
-            </ul>
-          </nav>
-        </header>
-        <div class="container">
-          <div class="hero-text">
-            <h2>Contact Me</h2>
-            <h3>You can contact me on my social media or with send me a private message here:</h3>
-            <button class="send-message">Send Message</button>
-            <!--<form>
-              <ul class="form-contact">
-                <li>
-                  <label>
-                    Username
-                    <span class="required">*</span>
-                    </label>
-                    <input type="text" name="field1" class="field-long" placeholder="First" />
-                </li>
-                <li>
-                  <label>Subject</label>
-                  <select name="field4" class="field-select">
-                    <option value="Advertise">Advertise</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="General Question">General</option>
-                  </select>
-                </li>
-                <li>
-                  <label>Your Message <span class="required">*</span></label>
-                  <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
-                </li>
-                <li>
-                  <input type="submit" value="Submit" />
-                </li>
-              </ul>
-            </form>-->
+      <!-- PROFESSIONAL -->
+
+      <!-- SLIDE 1 -->
+      <div class="main-width swiper-slide two swiper-container-skills">
+        <div class="swiper-wrapper">
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h1>My <span>Skills</span> and the <span>things</span> I can do</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Programming</h2>
+                <p>For almost 3 years, I have danced in the programming's world, and able to use these languages and frameworks:
+
+                <ul class="list-onhero">
+                  <li>HTML, CSS, Javascript </li>
+                  <li>NodeJS</li>
+                  <li>VueJS</li>
+                  <li>MongoDB</li>
+                </ul>
+
+                <img src="/assets/sample.jpg" />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Story Writing</h2>
+
+                <button class="skill-detail" onclick="skillButton()">
+                  V
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Visual Design</h2>
+
+                <button class="skill-detail" onclick="skillButton()">
+                  V
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div class="swiper-pagination-vertical pagination"></div>
       </div>
 
+      <!-- SLIDE 2 -->
+      <div class="main-width swiper-slide three swiper-container-work">
+        <div class="swiper-wrapper">
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h1>My <span>Works</span> and <span>Creativity</span></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Programming</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Content Writing</h2>
+
+                <button class="skill-detail" onclick="skillButton()">
+                  V
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Visual Design</h2>
+
+                <button class="skill-detail" onclick="skillButton()">
+                  V
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination-vertical pagination"></div>
+      </div>
+
+      <!-- SLIDE THREE -->
+      <div class="main-width swiper-slide four swiper-container-motto">
+        <div class="swiper-wrapper">
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h1>My <span>Mottos</span> and <span>Plans</span></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Programming</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Story Writing</h2>
+
+                <button class="skill-detail" onclick="skillButton()">
+                  V
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-width swiper-slide">
+            <div class="container">
+              <div class="hero-text">
+                <h2>Visual Design</h2>
+
+                <button class="skill-detail" onclick="skillButton()">
+                  V
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination-vertical pagination"></div>
+      </div>
+
+      <!-- SLIDE FOUR -->
       <div class="main-width swiper-slide five">
         <div class="container">
           <div class="hero-text">
-            <h1>Special thanks to:</h1>
+            <h1>Thank You</h1>
             <p>
-              • Vercel<br>
-              • Github<br>
-              • SPCK<br>
-              • PEACE TEAM
+              For all of you that helped me and visited this website. Thank you so much!
             </p>
           </div>
-          <div class="hero-text">
-            <p>
-              And all of you that helped me and visited this website. Thank you so much!
-            </p>
+          <div>
+            Contact Me
           </div>
         </div>
       </div>
 
     </div>
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination pagination"></div>
   </section>
 
   <script src="main.js"></script>
