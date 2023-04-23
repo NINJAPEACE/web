@@ -140,3 +140,10 @@
     opacity: 0;
   }
 }
+
+@keyframes bottom {
+  from {
+    transform: translateY(-50px);
+    opacity:.5;
+  }
+}

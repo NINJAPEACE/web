@@ -11,6 +11,8 @@ function swipeActive() {
     centerSlide: 'true',
     fade: 'true',
     grabCursor: 'true',
+    initialSlide: 4,
+    effect: "cube",
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -19,19 +21,25 @@ function swipeActive() {
     on: {
       realIndexChange: (s) => {
         let arr = {
-          "0": "one",
-          "1": "two",
-          "2": "three",
-          "3": "four",
-          "4": "five"
+          "0": "four-personal",
+          "1": "three-personal",
+          "2": "two-personal",
+          "3": "one-personal",
+          "4": "main-slide",
+          "5": "one-professional",
+          "6": "two-professional",
+          "7": "three-professional",
+          "8": "four-professional",
         }
 
         let index = arr[s.realIndex];
 
         let page = document.querySelector(`.swiper-slide.${index}`);
 
-        if (current.index !== s.realIndex) current.page.removeAttribute("status");
-        page.setAttribute("status", "active");
+        if (current && current.index !== s.realIndex) {
+          current.page.removeAttribute("status");
+          page.setAttribute("status", "active");
+        }
 
         current = { index: s.realIndex, page: page };
 
@@ -54,7 +62,7 @@ function swipeActive() {
     }
   });
 
-  for (swipePage of ["skills", "work"]) {
+  for (swipePage of ["skills", "work", "motto"]) {
     swiperDetails[swipePage] = new Swiper(`.swiper-container-${swipePage}`, {
       slidesPerView: 1,
       spaceBetween: 25,
@@ -63,6 +71,7 @@ function swipeActive() {
       centerSlide: 'true',
       fade: 'true',
       grabCursor: 'true',
+      effect:"flip",
       pagination: {
         el: `.swiper-container-${swipePage} .swiper-pagination-vertical`,
         clickable: true,
@@ -87,9 +96,7 @@ function addClass(a, b, c) {
 window.onload = () => {
   swipeActive();
 
-  current = { index: 0, page: document.querySelector(".one") };
-
-  document.querySelector(".one").setAttribute("status", "active");
+  current = { index: 4, page: document.querySelector(".main-slide") };
 
   document.querySelectorAll(".item").forEach(e => {
     e.classList.add("one");
@@ -97,9 +104,7 @@ window.onload = () => {
 
   setTimeout(() => {
     document.body.className = null;
-  }, 1000);
-}
 
-function skillButton() {
-  document.querySelector(".swiper-container-v1").style.display = "block";
+    document.querySelector(".main-slide").setAttribute("status", "active");
+  }, 1000);
 }

@@ -251,29 +251,24 @@ body {
 }
 
 /* ANIMATION */
-.one[status="active"] .hero-text {
+.up[status="active"] .hero-text {
   animation: up 1s ease;
   visibility: visible;
 }
 
-.two[status="active"] .hero-text {
-  visibility: visible;
-  animation: up 1s ease;
-}
-
-.three[status="active"] .hero-text {
+.left[status="active"] .hero-text {
   visibility: visible;
   animation: left 1s ease;
 }
 
-.four[status="active"] .hero-text {
+.right[status="active"] .hero-text {
   visibility: visible;
   animation: right 1s ease;
 }
 
-.five[status="active"] .hero-text {
+.bottom[status="active"] .hero-text {
   visibility: visible;
-  animation: up 1s ease;
+  animation: bottom 1s ease;
 }
 
 /* RESPONSIVE */
@@ -466,8 +461,8 @@ body .overflow {
 
 .swiper-slide.two .container .hero-text {
   position: relative;
-  width:100%;
-  height:90%;
+  width: 100%;
+  height: 90%;
 }
 
 .swiper-slide.two .container .hero-text h1 {
@@ -479,33 +474,53 @@ body .overflow {
 }
 
 .skill-detail {
-  border:none;
-  outline:none;
-  background:transparent;
-  color:var(--main-color);
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--main-color);
 }
 
 .swiper-container-v1 {
-  z-index:15;
-  width:100%;
-  height:100%;
-  position:absolute;
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 .swiper-pagination-vertical {
-  position:absolute;
-  right:0;
+  position: absolute;
+  right: 0;
 }
 
 .swiper-slide img {
-  width:80%;
-  margin:1rem 0 1rem 0;
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    border-radius: 5px;
+  width: 80%;
+  margin: 1rem 0 1rem 0;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  border-radius: 5px;
 }
 
 .list-onhero {
-  color:white;
+  color: white;
   font-size: 14.5px;
-  padding-left:10%;
+  padding-left: 10%;
+}
+
+.see-experience {
+  text-align: left;
+  display: block;
+  color: #DDDFF6;
+}
+
+.swiper-slide.four .container .hero-text {
+  position: relative;
+  width: 100%;
+  height: 90%;
+}
+
+.swiper-slide.four .container .hero-text h1 {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%);
+  width: 100%;
 }
