@@ -12,7 +12,7 @@ function swipeActive() {
     fade: 'true',
     grabCursor: 'true',
     initialSlide: 4,
-    effect: "cube",
+    effect: "coverflow",
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
