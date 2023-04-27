@@ -147,3 +147,15 @@
     opacity:.5;
   }
 }
+
+@keyframes diagonal {
+  from {
+    transform:translate(50px, 50px);
+  }
+}
+
+@keyframes diagonalLeft {
+  from {
+    transform:translate(-50px, -50px);
+  }
+}

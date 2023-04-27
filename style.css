@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
 /* ROOT */
 :root {
   --main-color: #2e8fcc;
-  --heading-size: 47px;
+  --heading-size: 300%;
   --subheading-size: 32px;
   --title-size: 17px;
   --subtitle-size: 13px;
@@ -21,17 +23,12 @@ html {
 
 body {
   overflow-x: hidden;
-  overflow-y:hidden;
+  overflow-y: hidden;
   height: inherit;
 }
 
 
 /* BASIC, PARENTAL ELEMENT */
-.main-width {
-  border-radius: 15px;
-  /*padding: 30px 75px;*/
-}
-
 .hero {
   width: 100%;
   height: 100%;
@@ -70,9 +67,11 @@ body {
   color: var(--main-color);
 }
 
-.container .hero-text h3 {
+.container .hero-text h3,
+.h3 {
   color: #eee;
-  font-weight: 400;
+  font-weight: 300;
+  font-family: "Lato", sans-serif;
   font-size: var(--title-size);
 }
 
@@ -88,13 +87,15 @@ body {
   font-size: var(--subheading-size);
 }
 
-.container .hero-text p {
+.container .hero-text p, .paragraph {
   width: 370px;
   max-width: 100%;
   color: #eee;
   font-size: 15px;
   line-height: 1.5;
   margin-bottom: 30px;
+  font-weight: 300;
+  font-family: "Lato", sans-serif;
 }
 
 .social a {
@@ -272,13 +273,14 @@ body {
   animation: bottom 1s ease;
 }
 
-/* RESPONSIVE */
-@media screen and (max-width:930px) {
-  .main-width {
-    border: none;
-    box-shadow: none;
-  }
+.diagonal[status="active"] .hero-text {
+  visibility: visible;
+  animation: diagonal 1s ease;
+}
 
+.diagonalLeft[status="active"] .hero-text {
+  visibility: visible;
+  animation: diagonalLeft 1s ease;
 }
 
 /* PAGINATION */
@@ -431,6 +433,7 @@ body .overflow {
   justify-content: space-between;
   color: #eee;
   margin-top: 1rem;
+  z-index: 9;
 }
 
 .professional-button {
@@ -460,13 +463,15 @@ body .overflow {
   font-size: var(--subtitle-size);
 }
 
-.swiper-slide.two .container .hero-text {
+.swiper-slide.one-professional .container .hero-text,
+.main-slide .container .hero-text {
   position: relative;
   width: 100%;
   height: 90%;
 }
 
-.swiper-slide.two .container .hero-text h1 {
+.swiper-slide.one-professional .container .hero-text .content,
+.main-slide .container .hero-text .content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -512,16 +517,100 @@ body .overflow {
   color: #DDDFF6;
 }
 
-.swiper-slide.four .container .hero-text {
-  position: relative;
-  width: 100%;
-  height: 90%;
+.contactme {
+  color: #eee;
 }
 
-.swiper-slide.four .container .hero-text h1 {
+.contact-button {
+  font-size: var(--title-size);
+}
+
+.contact-list {
+  display: none;
+  flex-direction: column;
+  padding: 25px;
+  font-size: calc(var(--title-size) - 3px);
+}
+
+.contact-list li {
+  margin: 5px 0 5px 0;
+}
+
+.contact-list[status="active"] {
+  display: flex;
+  animation: left .6s ease;
+}
+
+@media only screen and (min-width: 600px) {}
+
+@media only screen and (min-width: 768px) {}
+
+.item-iam-ninja {
+  color: #535353;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  font-size: 45px;
+  z-index: -1;
   position: absolute;
-  top: 100%;
-  left: 100%;
-  transform: translate(-100%, -100%);
-  width: 100%;
+  left: -45%;
+  bottom: -25%;
+  width: 150%;
+  transform: rotate(90deg);
+}
+
+.item-iam-ninja li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.one-professional .container .hero-text .content:nth-child(2) {
+  animation: fromZero 1s ease;
+}
+
+.one-professional .container .hero-text .content:nth-child(1) {
+  animation: fromZero 1s ease;
+}
+
+.hi-there {
+  width: 70%;
+  display: inline-block;
+  text-align: left;
+}
+
+.card {
+  display:flex;
+  flex-direction: column;
+  padding:18px;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  background:rgb(255,255,255,.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  margin:15px 0 15px 0;
+  z-index:1;
+}
+
+.card:hover {
+  transform:scale(1.1);
+  transition:.5s;
+  z-index:9;
+}
+
+.card .title {
+  color:#eee;
+  font-weight: bold;
+}
+
+.card .description {
+  color:#D6D6D6;
+}
+
+.card .complement {
+  color:#A6A6A6;
+}
+
+.no-select {
+  user-select:none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }

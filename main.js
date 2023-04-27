@@ -12,7 +12,7 @@ function swipeActive() {
     fade: 'true',
     grabCursor: 'true',
     initialSlide: 4,
-    effect: "coverflow",
+    effect: "slide",
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -45,24 +45,24 @@ function swipeActive() {
 
 
 
-        /* let elList = [
-           { el: "block-item", add: "item", on: ["one", "two", "three", "five"] },
-           { el: "round-item", add: "item", on: ["one", "two", "five"] },
-           { el: "triangle-item", add: "item", on: ["one", "two", "three", "four", "five"] },
-           { el: "logos", add: "item", on: ["one", "two", "three"], timer: { on: ["two"], time: 200 } }
+        let elList = [
+          { el: "block-item", add: "item", on: ["one", "two", "three", "five"] },
+          { el: "round-item", add: "item", on: ["one", "two", "five"] },
+          { el: "triangle-item", add: "item", on: ["one", "two", "three", "four", "five"] },
+          { el: "logos", add: "item", on: ["one", "two", "three"], timer: { on: ["two"], time: 200 } }
            ]
 
-         for (xy of elList) {
-           if (xy.on.includes(index)) {
-             addClass(xy, index, s.swipeDirection);
-           }
-         }*/
+        for (xy of elList) {
+          if (xy.on.includes(index)) {
+            addClass(xy, index, s.swipeDirection);
+          }
+        }
 
       }
     }
   });
 
-  for (swipePage of ["skills", "work", "motto"]) {
+  /*or (swipePage of ["motto"]) {
     swiperDetails[swipePage] = new Swiper(`.swiper-container-${swipePage}`, {
       slidesPerView: 1,
       spaceBetween: 25,
@@ -71,14 +71,14 @@ function swipeActive() {
       centerSlide: 'true',
       fade: 'true',
       grabCursor: 'true',
-      effect:"flip",
+      effect: "flip",
       pagination: {
         el: `.swiper-container-${swipePage} .swiper-pagination-vertical`,
         clickable: true,
         dynamicBullets: true,
       }
     });
-  }
+  }*/
 }
 
 function addClass(a, b, c) {
@@ -107,4 +107,18 @@ window.onload = () => {
 
     document.querySelector(".main-slide").setAttribute("status", "active");
   }, 1000);
+}
+
+function showSkills(e) {
+  if (e.children[1].style.display == "flex") {
+    e.children[0].style.display = "block";
+    e.children[1].style.display = "none";
+  } else {
+    e.children[0].style.display = "none";
+    e.children[1].style.display = "flex";
+  }
+}
+
+function href() {
+  
 }
