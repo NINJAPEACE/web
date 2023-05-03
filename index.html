@@ -24,7 +24,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/poppins.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Modules -->
@@ -48,56 +47,47 @@
       &nbsp;
     </div>
 
-    <div class="triangle-item item"></div>
-
     <div class="swiper-wrapper">
-      <!-- PERSONAL -->
-
-      <!-- SLIDE FOUR -->
-      <div class="main-width swiper-slide four-personal diagonalLeft">
+      <div class="main-width swiper-slide four-personal diagonal">
         <div class="container">
           <div class="hero-text">
-            <h1>Thank You</h1>
-            <p>
-              For all of you that helped me and visited this website. Thank you so much!
-            </p>
-          </div>
-          <div>
-            Contact Me
+            <div class="content">
+              <h1>Thank You</h1>
+              <p>
+                For all honoured people that helps me in every particular things.
+              </p>
+              <div class="contact">
+                Contact and Follow Me
+              </div>
+              <div class="social">
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- SLIDE THREE -->
-      <div class="main-width swiper-slide three-personal swiper-container-motto bottom">
-          <div class="main-width">
-            <div class="container">
-              <div class="hero-text">
-                <h1>Quotes<span></span></h1>
-              </div>
+      <div class="main-width swiper-slide three-personal bottom">
+        <div class="container">
+          <div class="hero-text">
+            <div class="content">
+              <h1>Quotes</h1>
+              <h3>Keep loving all the people even if you're not being loved.</h3>
+              <h3 style="text-align:right;">Learn by yourself, grow with the others, and help all the people.</h3>
             </div>
           </div>
+        </div>
       </div>
 
       <!-- SLIDE TWO -->
-      <div class="main-width swiper-slide two-personal swiper-container-work left">
-        <div class="main-width swiper-slide">
-          <div class="container">
-            <div class="hero-text">
-              <div class="content">
-                <h1>What am I <span>doing</span> currently?</h1>
-              </div>
-              <div class="content" style="display:none;flex-direction:column;gap:5rem;">
-                <div>
-                  <h2>Deutsch Lernen</h2>
-                  <p>Ist Deutsch schwer? Nein! Es ist einfach, aber sehr stressig.</p>
-                </div>
-                <div style="float:right;text-align:right;display:inline-block;">
-                  <h2>Writing a Story</h2>
-                  <p>I actually have written some kind of short stories but its quality is not as good as I predicted.</p>
-                </div>
-
-              </div>
+      <div class="main-width swiper-slide two-personal left center-xy">
+        <div class="container">
+          <div class="hero-text" onclick="show(this)">
+            <div class="content seventy">
+              <h1>What am I <span>doing</span> currently?</h1>
+              <p>Click to see.</p>
+            </div>
+            <div class="content" id="activity">
             </div>
           </div>
         </div>
@@ -106,28 +96,14 @@
       </div>
 
       <!-- SLIDE ONE -->
-      <div class="main-width swiper-slide one-personal swiper-container-skills up">
-        <div class="main-width">
-          <div class="container">
-            <div class="hero-text">
-              <div class="content">
-                <h1><span>Things</span> that I like.</h1>
-              </div>
-              <div class="content" style="display:none;flex-direction:column;gap:5rem;">
-                <div>
-                  <h2>Science and Math</h2>
-                  <p>Algorithms is everything.</p>
-                </div>
-                <div style="float:right;text-align:right;display:inline-block;">
-                  <h2>Psychology</h2>
-                  <p>The thing that coloured my life.</p>
-                </div>
-                <div>
-                  <h2>A</h2>
-                  <p>Communication.</p>
-                </div>
-
-              </div>
+      <div class="main-width swiper-slide one-personal up center-xy">
+        <div class="container">
+          <div class="hero-text" onclick="show(this)">
+            <div class="content seventy">
+              <h1><span>Things</span> that I like.</h1>
+              <p>Click to view it.</p>
+            </div>
+            <div class="content" id="interest">
             </div>
           </div>
         </div>
@@ -136,10 +112,10 @@
 
 
       <!-- MAIN SLIDE -->
-      <div class="main-width swiper-slide main-slide up">
+      <div class="main-width swiper-slide main-slide up center-xy">
         <div class="container">
           <div class="hero-text">
-            <div class="content" style="text-align:center;">
+            <div class="content seventy" style="text-align:center;">
               <div class="hi-there">
                 <h3>Hi, there!</h3>
                 <h1>I am <span>NINJA PEACE</span></h1>
@@ -166,27 +142,14 @@
       <!-- PROFESSIONAL -->
 
       <!-- SLIDE 1 -->
-      <div class="main-width swiper-slide one-professional up">
+      <div class="main-width swiper-slide one-professional up center-xy">
         <div class="container">
-          <div class="hero-text" onclick="showSkills(this)">
-            <div class="content" style="width:70%;">
+          <div class="hero-text" onclick="show(this)">
+            <div class="content seventy">
               <h1>My <span>Skills</span> and the <span>things</span> I can do</h1>
               <p>Click to check it out.</p>
             </div>
-            <div class="content" style="display:none;flex-direction:column;gap:5rem;">
-              <div>
-                <h2>Programming</h2>
-                <p>Algorithms is everything.</p>
-              </div>
-              <div style="float:right;text-align:right;display:inline-block;">
-                <h2>Visual Design</h2>
-                <p>The thing that coloured my life.</p>
-              </div>
-              <div>
-                <h2>Language Literature</h2>
-                <p>Communication.</p>
-              </div>
-
+            <div class="content" id="skills">
             </div>
           </div>
         </div>
@@ -194,12 +157,12 @@
       </div>
 
       <!-- SLIDE 2 -->
-      <div class="main-width swiper-slide two-professional swiper-container-work right">
-        <div class="main-width">
-          <div class="container">
-            <div class="hero-text">
+      <div class="main-width swiper-slide two-professional right">
+        <div class="container">
+          <div class="hero-text">
+            <div class="content card-list">
               <h1>My <span>Works</span> and <span>Creativity</span></h1>
-              <div class="card no-select" onclick="href(this)">
+              <!--<div class="card no-select" onclick="href(this)" id="DCB">
                 <div class="title">Discord-Counting-Bot</div>
                 <div class="description paragraph">Lorem ipsum dolor sit amet consetec...</div>
                 <div class="complement">
@@ -208,34 +171,34 @@
                   <span>100</span>
                 </div>
               </div>
-              <div class="card no-select" onclick="href(this)">
+              
+              <div class="card no-select" onclick="href(this)" id="DJS13">
                 <div class="title">Discordjs-v13</div>
                 <div class="description paragraph">Lorem ipsum dolor sit amet consetec...</div>
                 <div class="complement">
-                  <span>★ 5</span>
-                  <span>3</span>
-                  <span>100</span>
+                  <span><i class="fa-brands fa-github"></i></span>
                 </div>
               </div>
-              <div class="h3" style="padding-left:15px;">
+
+              <div class="h3 view no-select" style="padding-left:15px;">
                 View more...
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
       </div>
 
       <!-- SLIDE THREE -->
-      <div class="main-width swiper-slide three-professional swiper-container-motto bottom">
-        <div class="main-width swiper-slide">
-          <div class="container">
-            <div class="hero-text">
-              <h1>My <span>Mottos</span></h1>
+      <div class="main-width swiper-slide three-professional bottom">
+        <div class="container">
+          <div class="hero-text">
+            <div class="content">
+              <h1 style="text-align: center;">My <span>Mottos</span></h1>
               <div style="display:flex;flex-direction:column;gap:4rem;margin-top:3rem;">
-              <h3 style="width:50%;">Keep it simple.</h2>
-              <h3 style="float:right;text-align:right;width:50%;margin-left:50%;">The reaction force will be the same as the original force.</h3>
-              <h3 style="width:50%;">If we can not helps people, then we just a shit.</h3>
-              <h3 style="float:right;text-align:right;width:50%;margin-left:50%;">We should love even if we are not loved.</h3>
+                <h3 style="width:50%;">Keep it simple.</h2>
+                  <h3 style="float:right;text-align:right;width:50%;margin-left:50%;">The reaction force will be the same as the original force.</h3>
+                  <h3 style="width:50%;">If we can not helps people, then we just a shit.</h3>
+                  <h3 style="float:right;text-align:right;width:50%;margin-left:50%;">We should love even if we are not loved.</h3>
               </div>
             </div>
           </div>
@@ -246,23 +209,21 @@
       <div class="main-width swiper-slide four-professional diagonal">
         <div class="container">
           <div class="hero-text">
-            <h1>Thank You</h1>
-            <p>
-              For all honoured people that helps me in every particular things.
-            </p>
-            <div class="contactme">
-              Contact and Follow Me
-            </div>
-            <div class="social">
-              <a href="https://instagram.com/ninja_peace"><i class="fa-brands fa-instagram"></i></a>
-              <a href="https://www.youtube.com/@NINJAPEACE95"><i class="fa-brands fa-youtube"></i></a>
-              <a href="https://github.com/NINJAPEACE"><i class="fa-brands fa-github"></i></a>
-              <a href="https://instagram.com/ninja_peace"><i class="fa-brands fa-spotify"></i></a>
-              <a href="https://instagram.com/ninja_peace"><i class="fa-brands fa-discord"></i></a>
+            <div class="content">
+              <h1>Thank You</h1>
+              <p>
+                For all honoured people that helps me in every particular things.
+              </p>
+              <div class="contact">
+                Contact and Follow Me
+              </div>
+              <div class="social">
+              </div>
             </div>
           </div>
         </div>
       </div>
+
 
     </div>
     <div class="swiper-pagination pagination"></div>
