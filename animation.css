@@ -66,12 +66,6 @@
 }
 
 /* KEYFRAMES */
-@keyframes triangle {
-  from {
-    transform: translateX(20rem);
-  }
-}
-
 @keyframes round {
   from {
     transform: translateX(-150px) translateY(-250px);
@@ -95,13 +89,6 @@
 @keyframes right {
   from {
     transform: translateX(50px);
-  }
-}
-
-@keyframes blockLeft {
-  from {
-    transform: translateX(0) translateY(0) rotate(35deg);
-    opacity: .3;
   }
 }
 

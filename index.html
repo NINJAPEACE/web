@@ -23,7 +23,7 @@
   <!-- Imported Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Modules -->
@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="/swiper/swiper.css" />
 </head>
 
-<body class="load">
+<body class="load" id="app">
 
   <div class="overflow">
     <span>Loading ...</span>
@@ -39,11 +39,7 @@
 
   <section class="hero swiper">
 
-    <div class="round-item item">
-      &nbsp;
-    </div>
-
-    <div class="block-item item">
+    <div v-for="item in items" :class="item.class">
       &nbsp;
     </div>
 
@@ -60,6 +56,9 @@
                 Contact and Follow Me
               </div>
               <div class="social">
+                <a v-for="element in social" :href="element.href">
+                  <i :class="element.icon"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -82,12 +81,16 @@
       <!-- SLIDE TWO -->
       <div class="main-width swiper-slide two-personal left center-xy">
         <div class="container">
-          <div class="hero-text" onclick="show(this)">
+          <div class="hero-text" @click="show('two-personal')">
             <div class="content seventy">
               <h1>What am I <span>doing</span> currently?</h1>
               <p>Click to see.</p>
             </div>
             <div class="content" id="activity">
+              <div v-for="div in activity">
+                <h2>{{ div.h2 }}</h2>
+                <p>{{ div.p }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -98,12 +101,16 @@
       <!-- SLIDE ONE -->
       <div class="main-width swiper-slide one-personal up center-xy">
         <div class="container">
-          <div class="hero-text" onclick="show(this)">
+          <div class="hero-text" @click="show('one-personal')">
             <div class="content seventy">
               <h1><span>Things</span> that I like.</h1>
               <p>Click to view it.</p>
             </div>
             <div class="content" id="interest">
+              <div v-for="div in interest">
+                <h2>{{ div.h2 }}</h2>
+                <p>{{ div.p }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -118,9 +125,10 @@
             <div class="content seventy" style="text-align:center;">
               <div class="hi-there">
                 <h3>Hi, there!</h3>
-                <h1>I am <span>NINJA PEACE</span></h1>
+                <h1>I am <span>{{ name }}</span></h1>
                 <p class="h3">
-                  A normal human but also a self-taught programmer, high school student, and newbie visual designer.</p>
+                  {{ description }}
+                </p>
               </div>
 
               <div class="navigate-button">
@@ -144,12 +152,16 @@
       <!-- SLIDE 1 -->
       <div class="main-width swiper-slide one-professional up center-xy">
         <div class="container">
-          <div class="hero-text" onclick="show(this)">
+          <div class="hero-text" @click="show('one-professional')">
             <div class="content seventy">
               <h1>My <span>Skills</span> and the <span>things</span> I can do</h1>
               <p>Click to check it out.</p>
             </div>
             <div class="content" id="skills">
+              <div v-for="div in skills">
+                <h2>{{ div.h2 }}</h2>
+                <p>{{ div.p }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -162,27 +174,20 @@
           <div class="hero-text">
             <div class="content card-list">
               <h1>My <span>Works</span> and <span>Creativity</span></h1>
-              <!--<div class="card no-select" onclick="href(this)" id="DCB">
-                <div class="title">Discord-Counting-Bot</div>
-                <div class="description paragraph">Lorem ipsum dolor sit amet consetec...</div>
+              <div v-for="el in project" class="card no-select" @click="href(el.href)">
+                <div class="title">
+                  {{ el.title }}
+                </div>
+                <div class="description paragraph">
+                  {{ el.desc.length >= 30 ? el.desc.substr(0,30) + "..." : el.desc }}
+                </div>
                 <div class="complement">
-                  <span>★ 5</span>
-                  <span>3</span>
-                  <span>100</span>
+                  <span>
+                    <i :class="['fa-brands fa-' + el.icon]">
+                    </i>
+                  </span>
                 </div>
               </div>
-              
-              <div class="card no-select" onclick="href(this)" id="DJS13">
-                <div class="title">Discordjs-v13</div>
-                <div class="description paragraph">Lorem ipsum dolor sit amet consetec...</div>
-                <div class="complement">
-                  <span><i class="fa-brands fa-github"></i></span>
-                </div>
-              </div>
-
-              <div class="h3 view no-select" style="padding-left:15px;">
-                View more...
-              </div>-->
             </div>
           </div>
         </div>
@@ -218,6 +223,9 @@
                 Contact and Follow Me
               </div>
               <div class="social">
+                <a v-for="element in social" :href="element.href">
+                  <i :class="element.icon"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -226,9 +234,11 @@
 
 
     </div>
-    <div class="swiper-pagination pagination"></div>
+    <div class=" swiper-pagination pagination">
+    </div>
   </section>
 
+  <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
   <script src="main.js"></script>
 </body>
 
