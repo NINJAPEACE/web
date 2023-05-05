@@ -34,7 +34,7 @@ const app = createApp({
         { href: "https://instagram.com/ninja_peace", icon: "fa-brands fa-instagram" },
         { href: "https://www.youtube.com/@NINJAPEACE95", icon: "fa-brands fa-youtube" },
         { href: "https://github.com/NINJAPEACE", icon: "fa-brands fa-github" },
-        { href: "https://instagram.com/ninja_peace", icon: "fa-brands fa-spotify" },
+        { href: "https://open.spotify.com/user/31ci7q5wxxn7kg3b7pdkkndeghjy?si=LGvv_merR8qKZ0Q9PlhiIA", icon: "fa-brands fa-spotify" },
         { href: "https://instagram.com/ninja_peace", icon: "fa-brands fa-discord" }
       ],
       project: [
@@ -82,6 +82,15 @@ const app = createApp({
       if (!URL.includes("http")) return;
 
       window.location.href = URL;
+    },
+    sidebar() {
+      let sidebar = document.querySelector(".sidebar");
+
+      if (sidebar.getAttribute("status")) {
+        sidebar.removeAttribute("status");
+      } else {
+        sidebar.setAttribute("status", "active");
+      }
     }
   }
 });

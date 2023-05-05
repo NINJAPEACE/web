@@ -65,6 +65,11 @@
   animation: diagonalLeft 1s ease;
 }
 
+.sidebar[status="active"] {
+  display:block;
+  animation: sidebar 1s ease;
+}
+
 /* KEYFRAMES */
 @keyframes round {
   from {
@@ -121,5 +126,11 @@
 @keyframes diagonalLeft {
   from {
     transform: translate(-50px, -50px);
+  }
+}
+
+@keyframes sidebar {
+  0% {
+    transform:translateX(150%);
   }
 }

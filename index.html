@@ -43,7 +43,18 @@
       &nbsp;
     </div>
 
+    <div class="sidebar">
+      <ul>
+        <li>Home</li>
+        <li>Project</li>
+        <button @click="sidebar">
+          Close
+        </button>
+      </ul>
+    </div>
+
     <div class="swiper-wrapper">
+
       <div class="main-width swiper-slide four-personal diagonal">
         <div class="container">
           <div class="hero-text">
@@ -71,8 +82,11 @@
           <div class="hero-text">
             <div class="content">
               <h1>Quotes</h1>
-              <h3>Keep loving all the people even if you're not being loved.</h3>
-              <h3 style="text-align:right;">Learn by yourself, grow with the others, and help all the people.</h3>
+              <div class="left-right">
+                <h3>No one will love you, but you must love everyone.</h3>
+                <h3>Learn by yourself, grow with the others, and help all the people.</h3>
+                <h3>Just be yourself and beat your own mind.</h3>
+              </div>
             </div>
           </div>
         </div>
@@ -119,13 +133,19 @@
 
 
       <!-- MAIN SLIDE -->
-      <div class="main-width swiper-slide main-slide up center-xy">
+      <div class="main-width swiper-slide main-slide up center-xy no-select">
         <div class="container">
           <div class="hero-text">
             <div class="content seventy" style="text-align:center;">
+              <button class="home-nav-btn" @click="sidebar">
+                &nbsp;
+              </button>
               <div class="hi-there">
                 <h3>Hi, there!</h3>
-                <h1>I am <span>{{ name }}</span></h1>
+                <h1>
+                  I am&nbsp;
+                  <span>{{ name }}</span>
+                </h1>
                 <p class="h3">
                   {{ description }}
                 </p>
@@ -199,11 +219,9 @@
           <div class="hero-text">
             <div class="content">
               <h1 style="text-align: center;">My <span>Mottos</span></h1>
-              <div style="display:flex;flex-direction:column;gap:4rem;margin-top:3rem;">
-                <h3 style="width:50%;">Keep it simple.</h2>
-                  <h3 style="float:right;text-align:right;width:50%;margin-left:50%;">The reaction force will be the same as the original force.</h3>
-                  <h3 style="width:50%;">If we can not helps people, then we just a shit.</h3>
-                  <h3 style="float:right;text-align:right;width:50%;margin-left:50%;">We should love even if we are not loved.</h3>
+              <div class="left-right">
+                <h3>Keep it simple.</h3>
+                <h3>Result will be the same as the effort.</h3>
               </div>
             </div>
           </div>
@@ -234,7 +252,7 @@
 
 
     </div>
-    <div class=" swiper-pagination pagination">
+    <div class="swiper-pagination pagination">
     </div>
   </section>
 
