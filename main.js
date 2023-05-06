@@ -63,7 +63,17 @@ const app = createApp({
         { "h2": "You", "p": "Sorry, I'm just kidding." }],
       activity: [
         { "h2": "Deutsch Lernen", "p": "Ist Deutsch schwer? Nein! Es ist einfach, aber sehr stressig. Und du? Welche Sprachen sprichst du? Ich brauche hilfe für Deutsch Lernen..." },
-        { "h2": "Writing a Story", "p": "I like to write a short story, and currently I revise it into a novel. Can you please wait for my books get released?" }]
+        { "h2": "Writing a Story", "p": "I like to write a short story, and currently I revise it into a novel. Can you please wait for my books get released?" }],
+      quotes: [
+        "No one will love you, but you must love everyone.",
+        "Learn by yourself, grow with the others, and help all the people.",
+        "The biggest enemy is ourselves, not the other people."
+        ],
+      motto: [
+        "Keep it simple.",
+        "Learn, Grow, Helps.",
+        "Bring the Culture to the Future."
+        ]
     }
   },
   methods: {

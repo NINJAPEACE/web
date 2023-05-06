@@ -8,10 +8,10 @@
 
   <!-- SEO -->
   <title>NINJA PEACE's Website</title>
-  <meta name="description" content="Official website of NINJA PEACE, an intermediate programmer.">
+  <meta name="description" content="Official website of NINJA PEACE, a man thay called himself as a normal human, but people don't think so.">
 
   <!-- OpenGraph -->
-  <meta name="og:title" property="og:title" content="NINJA PEACE Personal Website">
+  <meta name="og:title" property="og:title" content="NINJA PEACE's Website">
   <meta name="og:description" property="og:description" content="The official website of NINJA PEACE.">
 
   <meta name="robots" content="index, follow">
@@ -76,28 +76,113 @@
         </div>
       </div>
 
-      <!-- SLIDE THREE -->
+      <!--
+      slides: [
+       { "class": "four-personal", anim: "", type: "", subtype: "", h1: "", p: "", }
+      ]
+
+      <div v-for="slide in slides" :class="['main-width swiper-slide' + class + ' ' + anim]">
+        <div class="container">
+        
+          <div v-if="type == 'normal'" class="hero-text">
+          
+            <div v-if="subtype === 'thanks'" class="content">
+            <h1>Thank you</h1>
+            <p>
+              For all honoured people that helps me in every particular things.
+            </p>
+            <div class="contact">
+              Contact and Follow Me
+            </div>
+            <div class="social">
+              <a v-for="element in social" :href="element.href">
+                <i :class="element.icon"></i>
+              </a>
+            </div>
+            </div>
+            
+            <div v-else-if="subtype === 'qm'" class="content">
+              <h1>{{ slide.h1 }}</h1>
+              <div class="left-right">
+                <h3 v-for="h3 in quotes">
+                  {{ h3 }}
+                </h3>
+              </div>
+            </div>
+            
+          </div>
+          
+          <div v-else-if="type == 'click'" class="hero-text" @click="show(slide.class)">
+                      <div class="content seventy">
+                      "What are my $current/$ activities?"
+                      h1.replaceAll("$../$", "<span>%s</span>");
+                      
+                      
+                        <h1>What are my <span>current</span> activities?</h1>
+                        <p>Click to see.</p>
+                      </div>
+                      <div class="content" id="activity">
+                        <div v-for="div in activity">
+                          <h2>{{ div.h2 }}</h2>
+                          <p>{{ div.p }}</p>
+                        </div>
+                      </div>
+          </div>
+          
+          <div v-else-if="type == 'main'" class="hero-text">
+            <div class="content seventy" style="text-align:center;">
+              <button class="home-nav-btn" @click="sidebar">
+                &nbsp;
+              </button>
+              <div class="hi-there">
+                <h3>Hi, there!</h3>
+                <h1>
+                  I am&nbsp;
+                  <span>{{ name }}</span>
+                </h1>
+                <p class="h3">
+                  {{ description }}
+                </p>
+              </div>
+
+              <div class="navigate-button">
+                <div class="personal-button" onclick="swiper.slidePrev()">
+                  <i class="fa-solid fa-chevron-left"></i>
+                  <span>Personal</span>
+                </div>
+                <div class="professional-button" onclick="swiper.slideNext()">
+                  <span>Professional</span>
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+-->
+
       <div class="main-width swiper-slide three-personal bottom">
         <div class="container">
           <div class="hero-text">
             <div class="content">
               <h1>Quotes</h1>
               <div class="left-right">
-                <h3>No one will love you, but you must love everyone.</h3>
-                <h3>Learn by yourself, grow with the others, and help all the people.</h3>
-                <h3>Just be yourself and beat your own mind.</h3>
+                <h3 v-for="h3 in quotes">
+                  {{ h3 }}
+                </h3>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SLIDE TWO -->
       <div class="main-width swiper-slide two-personal left center-xy">
         <div class="container">
           <div class="hero-text" @click="show('two-personal')">
             <div class="content seventy">
-              <h1>What am I <span>doing</span> currently?</h1>
+              <h1>What are my <span>current</span> activities?</h1>
               <p>Click to see.</p>
             </div>
             <div class="content" id="activity">
@@ -106,13 +191,11 @@
                 <p>{{ div.p }}</p>
               </div>
             </div>
+            
           </div>
         </div>
-
-
       </div>
 
-      <!-- SLIDE ONE -->
       <div class="main-width swiper-slide one-personal up center-xy">
         <div class="container">
           <div class="hero-text" @click="show('one-personal')">
@@ -131,8 +214,6 @@
 
       </div>
 
-
-      <!-- MAIN SLIDE -->
       <div class="main-width swiper-slide main-slide up center-xy no-select">
         <div class="container">
           <div class="hero-text">
@@ -166,10 +247,6 @@
         </div>
       </div>
 
-
-      <!-- PROFESSIONAL -->
-
-      <!-- SLIDE 1 -->
       <div class="main-width swiper-slide one-professional up center-xy">
         <div class="container">
           <div class="hero-text" @click="show('one-professional')">
@@ -188,7 +265,6 @@
 
       </div>
 
-      <!-- SLIDE 2 -->
       <div class="main-width swiper-slide two-professional right">
         <div class="container">
           <div class="hero-text">
@@ -213,22 +289,21 @@
         </div>
       </div>
 
-      <!-- SLIDE THREE -->
       <div class="main-width swiper-slide three-professional bottom">
         <div class="container">
           <div class="hero-text">
             <div class="content">
               <h1 style="text-align: center;">My <span>Mottos</span></h1>
               <div class="left-right">
-                <h3>Keep it simple.</h3>
-                <h3>Result will be the same as the effort.</h3>
+                <h3 v-for="h3 in motto">
+                  {{ h3 }}
+                </h3>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SLIDE FOUR -->
       <div class="main-width swiper-slide four-professional diagonal">
         <div class="container">
           <div class="hero-text">
