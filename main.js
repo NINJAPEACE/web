@@ -16,6 +16,25 @@ const app = createApp({
       e.classList.add("one");
     });
 
+    (() => {
+      let hOne = document.getElementsByTagName("h1");
+
+      for (h in hOne) {
+        if (isNaN(h)) return;
+
+        if (hOne[h].innerHTML.includes("$")) {
+          let str = "";
+          for (x of hOne[h].innerHTML.split("$")) {
+            if (hOne[h].innerHTML.split("$").indexOf(x) % 2 === 1) {
+              str += `<span>${x}</span>`;
+            } else str += x;
+          }
+
+          hOne[h].innerHTML = str;
+        }
+      }
+    })();
+
     setTimeout(() => {
       document.body.className = null;
 
@@ -26,6 +45,73 @@ const app = createApp({
     return {
       name: "NINJA PEACE",
       description: "A normal human but also a self-taught programmer, high school student, and newbie visual designer.",
+      slides: [
+        { classes: "four-personal", anim: "diagonal", type: "normal", subtype: "thanks" },
+        {
+          classes: "three-personal",
+          anim: "bottom",
+          type: "normal",
+          subtype: "qm",
+          heading: "Quotes",
+          list: [
+                "No one will love you, but you must love everyone.",
+                "Learn by yourself, grow with the others, and help all the people.",
+                "The biggest enemy is ourselves, not the other people."
+                ]
+        },
+        {
+          classes: "two-personal",
+          anim: "left",
+          type: "click",
+          heading: "My $current$ routine",
+          p: "Click to see it.",
+          list: [
+            { "h2": "Deutsch Lernen", "p": "Ist Deutsch schwer? Nein! Es ist einfach, aber sehr stressig. Und du? Welche Sprachen sprichst du? Ich brauche hilfe für Deutsch Lernen..." },
+            { "h2": "Writing a Story", "p": "I like to write a short story, and currently I revise it into a novel. Can you please wait for my books get released?" }]
+        },
+        {
+          classes: "one-personal",
+          anim: "up",
+          type: "click",
+          heading: "$Things$ that I like",
+          p: "Click here to view.",
+          list: [
+            { "h2": "Science and Math", "p": "Do you know why the gravitation is defined as 9,8 m/s²? It's because the gravity." },
+            { "h2": "Psychology", "p": "No, I am not a psychopath, that's different." },
+            { "h2": "You", "p": "Sorry, I'm just kidding." }]
+        },
+        { classes: "main-slide no-select", anim: "up", type: "main" },
+        {
+          classes: "one-professional",
+          anim: "up",
+          type: "click",
+          heading: "My $Skills$ and the $things$ I can do",
+          p: "Click to check it out.",
+          list: [
+            { "h2": "Programming", "p": "Algorithms is everything, it can build your minds and future." },
+            { "h2": "Visual Design", "p": "Color presets would colored your life." },
+            { "h2": "Language Literature", "p": "Communication with people." }]
+        },
+        {
+          classes: "two-professional",
+          anim: "right",
+          type: "project",
+          heading: "My $Works$ and $Creativity$"
+        },
+        {
+          classes: "three-professional",
+          anim: "bottom",
+          type: "normal",
+          subtype: "qm",
+          heading: "My $Motto$",
+          list: [
+             "Keep it simple.",
+             "Learn, Grow, Helps.",
+             "Bring the Culture to the Future."
+          ]
+        },
+        { classes: "four-professional", anim: "diagonal", type: "normal", subtype: "thanks" }
+      ],
       items: [
         { "class": "block-item item", width: 69 },
         { "class": "round-item item", width: 69 }
@@ -52,33 +138,16 @@ const app = createApp({
           icon: "github",
           href: "https://github.com/NINJAPEACE/Discordjs-v13"
       }
-      ],
-      skills: [
-        { "h2": "Programming", "p": "Algorithms is everything, it can build your minds and future." },
-        { "h2": "Visual Design", "p": "Color presets would colored your life." },
-        { "h2": "Language Literature", "p": "Communication with people." }],
-      interest: [
-        { "h2": "Science and Math", "p": "Do you know why the gravitation is defined as 9,8 m/s²? It's because the gravity." },
-        { "h2": "Psychology", "p": "No, I am not a psychopath, that's different." },
-        { "h2": "You", "p": "Sorry, I'm just kidding." }],
-      activity: [
-        { "h2": "Deutsch Lernen", "p": "Ist Deutsch schwer? Nein! Es ist einfach, aber sehr stressig. Und du? Welche Sprachen sprichst du? Ich brauche hilfe für Deutsch Lernen..." },
-        { "h2": "Writing a Story", "p": "I like to write a short story, and currently I revise it into a novel. Can you please wait for my books get released?" }],
-      quotes: [
-        "No one will love you, but you must love everyone.",
-        "Learn by yourself, grow with the others, and help all the people.",
-        "The biggest enemy is ourselves, not the other people."
-        ],
-      motto: [
-        "Keep it simple.",
-        "Learn, Grow, Helps.",
-        "Bring the Culture to the Future."
-        ]
+      ]
     }
   },
   methods: {
     show(a) {
-      let e = document.querySelector(`.${a}`).children[0].children[0];
+      let e = document.querySelector(`.${a}`);
+
+      if (!e) return;
+
+      e = e.children[0].children[0];
 
       if (e.children[1].style.display == "flex") {
         e.children[0].style.display = "block";
@@ -108,7 +177,7 @@ const app = createApp({
 app.mount(appEl);
 
 app.config.errorHandler = (err) => {
-  console.err(err)
+  console.log(err)
 }
 
 function swipeActive() {
