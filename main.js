@@ -6,34 +6,36 @@ const { createApp } = Vue;
 
 const appEl = document.querySelector('#app');
 
+import { hireCard, resumeButton, aboutButton, navButton } from "./components/mainComponent.js";
+import { heading } from "./components/heading.js";
+import { data } from "./data.js";
+
 const app = createApp({
   mounted: function() {
     swipeActive();
+    eva.replace();
 
     current = { index: 4, page: document.querySelector(".main-slide") };
 
+    //ITEM DETAILS
     document.querySelectorAll(".item").forEach(e => {
       e.classList.add("one");
     });
 
-    (() => {
-      let hOne = document.getElementsByTagName("h1");
+    document.querySelectorAll(".slide-button").forEach(y => {
 
-      for (h in hOne) {
-        if (isNaN(h)) return;
+      let attr = y.getAttribute("type") ? toUpper(y.getAttribute("type")) : 0;
 
-        if (hOne[h].innerHTML.includes("$")) {
-          let str = "";
-          for (x of hOne[h].innerHTML.split("$")) {
-            if (hOne[h].innerHTML.split("$").indexOf(x) % 2 === 1) {
-              str += `<span>${x}</span>`;
-            } else str += x;
-          }
-
-          hOne[h].innerHTML = str;
-        }
+      function toUpper(str) {
+        if (!str || typeof str !== "string") return;
+        return str[0].toUpperCase() + str.substr(1, str.length - 1);
       }
-    })();
+
+      if (swiper["slide" + attr]) {
+        y.addEventListener("click", () => swiper["slide" + attr]())
+      }
+
+    });
 
     setTimeout(() => {
       document.body.className = null;
@@ -41,105 +43,13 @@ const app = createApp({
       document.querySelector(".main-slide").setAttribute("status", "active");
     }, 1000);
   },
-  data: function() {
-    return {
-      name: "NINJA PEACE",
-      description: "A normal human but also a self-taught programmer, high school student, and newbie visual designer.",
-      slides: [
-        { classes: "four-personal", anim: "diagonal", type: "normal", subtype: "thanks" },
-        {
-          classes: "three-personal",
-          anim: "bottom",
-          type: "normal",
-          subtype: "qm",
-          heading: "Quotes",
-          list: [
-                "No one will love you, but you must love everyone.",
-                "Learn by yourself, grow with the others, and help all the people.",
-                "The biggest enemy is ourselves, not the other people."
-                ]
-        },
-        {
-          classes: "two-personal",
-          anim: "left",
-          type: "click",
-          heading: "My $current$ routine",
-          p: "Click to see it.",
-          list: [
-            { "h2": "Deutsch Lernen", "p": "Ist Deutsch schwer? Nein! Es ist einfach, aber sehr stressig. Und du? Welche Sprachen sprichst du? Ich brauche hilfe für Deutsch Lernen..." },
-            { "h2": "Writing a Story", "p": "I like to write a short story, and currently I revise it into a novel. Can you please wait for my books get released?" }]
-        },
-        {
-          classes: "one-personal",
-          anim: "up",
-          type: "click",
-          heading: "$Things$ that I like",
-          p: "Click here to view.",
-          list: [
-            { "h2": "Science and Math", "p": "Do you know why the gravitation is defined as 9,8 m/s²? It's because the gravity." },
-            { "h2": "Psychology", "p": "No, I am not a psychopath, that's different." },
-            { "h2": "You", "p": "Sorry, I'm just kidding." }]
-        },
-        { classes: "main-slide no-select", anim: "up", type: "main" },
-        {
-          classes: "one-professional",
-          anim: "up",
-          type: "click",
-          heading: "My $Skills$ and the $things$ I can do",
-          p: "Click to check it out.",
-          list: [
-            { "h2": "Programming", "p": "Algorithms is everything, it can build your minds and future." },
-            { "h2": "Visual Design", "p": "Color presets would colored your life." },
-            { "h2": "Language Literature", "p": "Communication with people." }]
-        },
-        {
-          classes: "two-professional",
-          anim: "right",
-          type: "project",
-          heading: "My $Works$ and $Creativity$"
-        },
-        {
-          classes: "three-professional",
-          anim: "bottom",
-          type: "normal",
-          subtype: "qm",
-          heading: "My $Motto$",
-          list: [
-             "Keep it simple.",
-             "Learn, Grow, Helps.",
-             "Bring the Culture to the Future."
-          ]
-        },
-        { classes: "four-professional", anim: "diagonal", type: "normal", subtype: "thanks" }
-      ],
-      items: [
-        { "class": "block-item item", width: 69 },
-        { "class": "round-item item", width: 69 }
-        ],
-      social: [
-        { href: "https://instagram.com/ninja_peace", icon: "fa-brands fa-instagram" },
-        { href: "https://www.youtube.com/@NINJAPEACE95", icon: "fa-brands fa-youtube" },
-        { href: "https://github.com/NINJAPEACE", icon: "fa-brands fa-github" },
-        { href: "https://open.spotify.com/user/31ci7q5wxxn7kg3b7pdkkndeghjy?si=LGvv_merR8qKZ0Q9PlhiIA", icon: "fa-brands fa-spotify" },
-        { href: "https://instagram.com/ninja_peace", icon: "fa-brands fa-discord" }
-      ],
-      project: [
-        {
-          id: "DCB",
-          title: "Discord-Counting-Bot",
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          icon: "github",
-          href: "https://github.com/NINJAPEACE/Discord-Counting-Bot"
-      },
-        {
-          id: "DJS-13",
-          title: "DiscordJS-v13",
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          icon: "github",
-          href: "https://github.com/NINJAPEACE/Discordjs-v13"
-      }
-      ]
-    }
+  data: data,
+  components: {
+    hireCard,
+    resumeButton,
+    navButton,
+    aboutButton,
+    heading
   },
   methods: {
     show(a) {
@@ -217,7 +127,7 @@ function swipeActive() {
           { el: "round-item", add: "item" }
            ]
 
-        for (xy of elList) {
+        for (let xy of elList) {
           addClass(xy, `s${s.realIndex}`, 1);
         }
 

@@ -14,7 +14,7 @@
   transform:translate(-55%, 60%) rotate(38deg) scale(1.4);
 }
 
-.block-item.s7, .block-item.s8 {
+.block-item.s7, .block-item.s8, .block-item.s9{
   transform:translate(-150%, 40%);
 }
 
@@ -31,7 +31,7 @@
   transform: translateX(-35%) translateY(-25%);
 }
 
-.round-item.s5, .round-item.s6, .round-item.s7, .round-item.s8 {
+.round-item.s5, .round-item.s6, .round-item.s7, .round-item.s8, .round-item.s9 {
   transform:translate(-100%, -50%);
 }
 
@@ -132,5 +132,17 @@
 @keyframes sidebar {
   0% {
     transform:translateX(150%);
+  }
+}
+
+@keyframes activeLoop {
+  0% {
+    background:#27AD06;
+  }
+  50% {
+    background: #6CFF47;
+  }
+  100% {
+    background: #27AD06;
   }
 }
