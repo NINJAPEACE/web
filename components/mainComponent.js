@@ -1,18 +1,21 @@
-export { hireCard, aboutButton, resumeButton, navButton };
+export { hireCard, aboutButton, resumeButton, navButton, heading };
 
 const hireCard = {
   template: `<div class="card hire-card no-select">
                 <div class="hire-child">
                   <img src="assets/avatar.jpg" />
                 </div>
-                <div class="title hire-child">
-                  <div>Available for Projects</div>
+                <div class="hire-child">
+                  <div class="title">Available for Projects</div>
                   <button class="hire-me">
-                    Hire Me
+                    <a href="mailto:ninjapeace95@gmail.com?subject=Hire&body=Can I hire you?">Hire Me</a>
                   </button>
                 </div>
                 <div class="hire-child">
                   <div class="rounded-status">&nbsp;</div>
+                </div>
+                <div class="hire-child hire-close">
+                 <i data-eva="close-outline" data-eva-fill="#eee"></i>
                 </div>
               </div>`
 }
@@ -38,10 +41,14 @@ const navButton = {
                   <span>Professional</span>
                   <i class="fa-solid fa-chevron-right"></i>
                 </div>
-              </div>`,
-  methods: {
-    slide() {
-      swiper.slidePrev()
-    }
-  }
+              </div>`
+}
+
+const heading = {
+  props: ['header'],
+  template: `<h1>
+  <span v-for="h in header.split('$')"  :class="header.split('$').indexOf(h) % 2 === 1 ? 'blue' : ''">
+    {{ h }}
+  </span>
+  </h1>`
 }

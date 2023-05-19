@@ -6,8 +6,7 @@ const { createApp } = Vue;
 
 const appEl = document.querySelector('#app');
 
-import { hireCard, resumeButton, aboutButton, navButton } from "./components/mainComponent.js";
-import { heading } from "./components/heading.js";
+import { hireCard, resumeButton, aboutButton, navButton, heading } from "./components/mainComponent.js";
 import { data } from "./data.js";
 
 const app = createApp({
@@ -20,6 +19,10 @@ const app = createApp({
     //ITEM DETAILS
     document.querySelectorAll(".item").forEach(e => {
       e.classList.add("one");
+    });
+
+    document.querySelector(".hire-close").addEventListener("click", () => {
+      document.querySelector(".view-hire").click()
     });
 
     document.querySelectorAll(".slide-button").forEach(y => {
@@ -37,11 +40,9 @@ const app = createApp({
 
     });
 
-    setTimeout(() => {
-      document.body.className = null;
+    document.body.className = "";
 
-      document.querySelector(".main-slide").setAttribute("status", "active");
-    }, 1000);
+    document.querySelector(".main-slide").setAttribute("status", "active");
   },
   data: data,
   components: {
@@ -72,14 +73,30 @@ const app = createApp({
 
       window.location.href = URL;
     },
-    sidebar() {
+    sidebar(e) {
       let sidebar = document.querySelector(".sidebar");
 
       if (sidebar.getAttribute("status")) {
         sidebar.removeAttribute("status");
+        e.target.removeAttribute("click");
       } else {
         sidebar.setAttribute("status", "active");
+        e.target.setAttribute("click", "true");
       }
+
+    },
+    hireActive() {
+      let hire = document.querySelector(".hire-card");
+
+      if (!hire) return;
+
+      if (hire.getAttribute("status")) hire.removeAttribute("status");
+      else hire.setAttribute("status", "active");
+
+      let viewHire = document.querySelector(".view-hire");
+
+      if (viewHire.getAttribute("click")) viewHire.removeAttribute("click");
+      else viewHire.setAttribute("click", "true")
     }
   }
 });
@@ -111,13 +128,15 @@ function swipeActive() {
 
         let index = document.querySelector(".swiper-wrapper").children[s.realIndex].classList[2];
 
-        if (s == 8 || !index) return;
+        // console.log(document.querySelector(".swiper-wrapper").children)
+
+        if (!index) return;
 
         let page = document.querySelector(`.${index}`);
 
         if (current && current.index !== s.realIndex) {
           current.page.removeAttribute("status");
-          page.setAttribute("status", "active");
+          page.setAttribute("status", "active")
         }
 
         current = { index: s.realIndex, page: page };
@@ -125,11 +144,13 @@ function swipeActive() {
         let elList = [
           { el: "block-item", add: "item" },
           { el: "round-item", add: "item" }
-           ]
+           ];
 
-        for (let xy of elList) {
-          addClass(xy, `s${s.realIndex}`, 1);
-        }
+        setTimeout(() => {
+          for (let xy of elList) {
+            addClass(xy, `s${s.realIndex}`, 1);
+          }
+        }, 100)
 
       }
     }
@@ -149,5 +170,17 @@ function addClass(a, b, c) {
     } else {
       document.querySelector(`.${a.el}`).className += b;
     }
+  }
+}
+
+function hireActive() {
+  let hire = document.querySelector(".hire-card");
+
+  if (!hire) return;
+
+  if (hire.getAttribute("status")) {
+    hire.removeAttribute("status");
+  } else {
+    hire.setAttribute("status", "active")
   }
 }
