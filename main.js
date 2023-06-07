@@ -1,28 +1,28 @@
-var swiper;
-var current;
+var current, swiper;
 var swiperDetails = {};
 
 const { createApp } = Vue;
 
 const appEl = document.querySelector('#app');
 
-import { hireCard, resumeButton, aboutButton, navButton, heading } from "./components/mainComponent.js";
+import { resumeButton, aboutButton, knowButton, answerButton, navButton, heading } from "./components/mainComponent.js";
 import { data } from "./data.js";
 
 const app = createApp({
-  mounted: function() {
-    swipeActive();
-    eva.replace();
+  mounted: async () => {
 
-    current = { index: 4, page: document.querySelector(".main-slide") };
-
-    //ITEM DETAILS
-    document.querySelectorAll(".item").forEach(e => {
-      e.classList.add("one");
+    swipeActive((a, b, remove = 1) => {
+      if (remove) {
+        document.querySelector(`.${a}`).className = `${a} item ${b}`;
+      }
     });
 
-    document.querySelector(".hire-close").addEventListener("click", () => {
-      document.querySelector(".view-hire").click()
+    eva.replace();
+
+    current = { index: 5, page: document.querySelector(".main-slide") };
+
+    document.querySelectorAll(".item").forEach(e => {
+      e.classList.add("one");
     });
 
     document.querySelectorAll(".slide-button").forEach(y => {
@@ -37,7 +37,6 @@ const app = createApp({
       if (swiper["slide" + attr]) {
         y.addEventListener("click", () => swiper["slide" + attr]())
       }
-
     });
 
     document.body.className = "";
@@ -46,57 +45,39 @@ const app = createApp({
   },
   data: data,
   components: {
-    hireCard,
     resumeButton,
+    knowButton,
     navButton,
     aboutButton,
+    answerButton,
     heading
   },
   methods: {
-    show(a) {
-      let e = document.querySelector(`.${a}`);
+    match(a, b) {
+      if (a == b) return 1;
+      else return 0;
+    },
+    include(a, b) {
+      if (a.includes(b)) return 1;
+      else return 0;
+    },
+    setAttr(obj) {
+      if (!obj) return;
 
-      if (!e) return;
-
-      e = e.children[0].children[0];
-
-      if (e.children[1].style.display == "flex") {
-        e.children[0].style.display = "block";
-        e.children[1].style.display = "none";
-      } else {
-        e.children[0].style.display = "none";
-        e.children[1].style.display = "flex";
-      }
+      if (obj[0].getAttribute(obj[1])) obj[0].removeAttribute(obj[1]);
+      else obj[0].setAttribute(obj[1], obj[2] || "");
     },
     href(URL) {
       if (!URL.includes("http")) return;
-
-      window.location.href = URL;
+      else window.location.href = URL;
     },
     sidebar(e) {
       let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebar-button");
 
-      if (sidebar.getAttribute("status")) {
-        sidebar.removeAttribute("status");
-        e.target.removeAttribute("click");
-      } else {
-        sidebar.setAttribute("status", "active");
-        e.target.setAttribute("click", "true");
-      }
-
-    },
-    hireActive() {
-      let hire = document.querySelector(".hire-card");
-
-      if (!hire) return;
-
-      if (hire.getAttribute("status")) hire.removeAttribute("status");
-      else hire.setAttribute("status", "active");
-
-      let viewHire = document.querySelector(".view-hire");
-
-      if (viewHire.getAttribute("click")) viewHire.removeAttribute("click");
-      else viewHire.setAttribute("click", "true")
+      [[sidebar, "status", "active"], [sidebarBtn, "click", "true"]].forEach(async (e) => {
+        this.setAttr(e)
+      });
     }
   }
 });
@@ -107,7 +88,9 @@ app.config.errorHandler = (err) => {
   console.log(err)
 }
 
-function swipeActive() {
+function swipeActive(addClass) {
+  if (!Swiper) return window.location.reload();
+
   swiper = new Swiper(".swiper", {
     slidesPerView: 1,
     spaceBetween: 25,
@@ -115,7 +98,7 @@ function swipeActive() {
     centerSlide: 'true',
     fade: 'true',
     grabCursor: 'true',
-    initialSlide: 4,
+    initialSlide: 5,
     effect: "slide",
     pagination: {
       el: ".swiper-pagination",
@@ -124,11 +107,10 @@ function swipeActive() {
     },
     on: {
       realIndexChange: (s) => {
+
         if (!s) return;
 
         let index = document.querySelector(".swiper-wrapper").children[s.realIndex].classList[2];
-
-        // console.log(document.querySelector(".swiper-wrapper").children)
 
         if (!index) return;
 
@@ -141,46 +123,18 @@ function swipeActive() {
 
         current = { index: s.realIndex, page: page };
 
-        let elList = [
-          { el: "block-item", add: "item" },
-          { el: "round-item", add: "item" }
-           ];
+        let parallax = [
+          "block-item",
+          "round-item"
+          ];
 
         setTimeout(() => {
-          for (let xy of elList) {
-            addClass(xy, `s${s.realIndex}`, 1);
+          for (let xy of parallax) {
+            addClass(xy, `s${s.realIndex}`);
           }
         }, 100)
 
       }
     }
   });
-}
-
-function addClass(a, b, c) {
-  if (a.timer?.on.includes(b)) {
-    setTimeout(() => {
-      addTo();
-    }, a.timer.time)
-  } else addTo(c);
-
-  function addTo(remove) {
-    if (remove) {
-      document.querySelector(`.${a.el}`).className = `${a.el} ${a.add} ${b} ${c}`;
-    } else {
-      document.querySelector(`.${a.el}`).className += b;
-    }
-  }
-}
-
-function hireActive() {
-  let hire = document.querySelector(".hire-card");
-
-  if (!hire) return;
-
-  if (hire.getAttribute("status")) {
-    hire.removeAttribute("status");
-  } else {
-    hire.setAttribute("status", "active")
-  }
 }

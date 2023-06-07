@@ -8,7 +8,7 @@
 
   <!-- SEO -->
   <title>NINJA PEACE's Website</title>
-  <meta name="description" content="Official website of NINJA PEACE, a man that called himself as a normal human, but people don't think so.">
+  <meta name="description" content="Personal website of NINJA PEACE, a man that called himself as a normal human, but people don't think so. Me too, btw.">
 
   <!-- OpenGraph -->
   <meta name="og:title" property="og:title" content="NINJA PEACE's Website">
@@ -17,8 +17,11 @@
   <meta name="robots" content="index, follow">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="animation.css">
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="animation.css" as="style">
+
+  <link rel="stylesheet" href="style.css" media="screen">
+  <link rel="stylesheet" href="animation.css" media="screen">
 
   <!-- Imported Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,15 +59,15 @@
 
     <div class="swiper-wrapper">
 
-      <div v-for="slide in slides" :class="['main-width swiper-slide ' + slide.classes + ' center-xy ' + slide.anim]">
+      <div v-for="slide in slides" :class="['main-width swiper-slide ' + slide.classes + ' center-xy no-select ' + slide.anim]">
         <div class="container">
 
-          <div v-if="slide.type === 'normal'" class="hero-text no-select">
+          <div class="hero-text">
 
-            <div v-if="slide.subtype === 'thanks'" class="content">
-              <h1>Thank You</h1>
+            <div v-if="match(slide.type, 'thanks')" class="content">
+              <h1>{{ slide.h1 }}</h1>
               <p>
-                For all honoured people that helps me in every particular things.
+                {{ slide.p }}
               </p>
               <div class="contact">
                 Follow Me
@@ -82,23 +85,10 @@
                   </a>
                 </div>
               </div>
-              <div class="view-hire" @click="hireActive" v-if="slide.classes.includes('professional')">
-                <i data-eva="arrow-ios-back-outline" class="hire-arrow"></i>
-              </div>
-              <hire-card v-if="slide.classes.includes('professional')"></hire-card>
             </div>
 
-            <div v-else-if="slide.subtype === 'qm'" class="content">
-              <heading :header="slide.heading"></heading>
-              <div class="left-right">
-                <h3 v-for="h3 in slide.list">
-                  {{ h3 }}
-                </h3>
-              </div>
-            </div>
-
-            <div v-else-if="slide.subtype === 'main'" class="content seventy" style="text-align:center;">
-              <button class="home-nav-btn" @click="sidebar">
+            <div v-else-if="match(slide.type, 'main')" class="content seventy">
+              <button class="sidebar-button" @click="sidebar">
                 &nbsp;
               </button>
               <div class="hi-there">
@@ -114,7 +104,7 @@
               <nav-button></nav-button>
             </div>
 
-            <div v-else-if="slide.subtype === 'project'" class="content card-list">
+            <div v-else-if="match(slide.type, 'project')" class="content card-list">
               <heading :header="slide.heading"></heading>
               <div v-for="el in project" class="card no-select" @click="href(el.href)">
                 <div class="title">
@@ -132,60 +122,53 @@
               </div>
             </div>
 
-            <div v-else-if="slide.subtype === 'pro'" class="content">
-              <h3>{{ slide.h3 }}</h3>
-              <heading :header="slide.heading"></heading>
+            <div v-else-if="match(slide.type, 'normal')" class="content">
+              <div>
+                <h3>{{ slide.h3 }}</h3>
+                <heading :header="slide.heading"></heading>
 
-              <p>
-              <p v-if="slide.p.type === 'string'">{{ slide.p.content }}</p>
-              <div v-if="slide.p.type === 'object'" class="content-parent">
+                <p>
+                <p v-if="match(slide.p.type, 'string')" :click="quotes" v-for="p in slide.p.content">{{ p }}</p>
+                <div v-if="match(slide.p.type, 'object')" class="content-parent">
 
-                <div v-for="s in slide.p.content" class="content-list">
-                  <div v-if="slide.p.content.indexOf(s) % 2 == 1"></div>
+                  <div v-for="s in slide.p.content" class="content-list">
+                    <div v-if="slide.p.content.indexOf(s) % 2 == 1"></div>
 
-                  <div v-if="slide.p.content.indexOf(s) % 2 == 1">
-                    <div class="rounders"></div>
-                    <div class="line"></div>
-                  </div>
+                    <div v-if="slide.p.content.indexOf(s) % 2 == 1">
+                      <div class="rounders"></div>
+                      <div class="line"></div>
+                    </div>
 
-                  <div :style="slide.p.content.indexOf(s) % 2 == 0 ? ['text-align:right'] : ''">
-                    <div class="content-title">{{ s }}</div>
-                  </div>
+                    <div :style="slide.p.content.indexOf(s) % 2 == 0 ? ['text-align:right'] : ['text-align:left']">
+                      <div class="content-title">{{ s }}</div>
+                    </div>
 
-                  <div v-if="slide.p.content.indexOf(s) % 2 == 0">
-                    <div class="rounders"></div>
-                    <div class="line" v-if="slide.p.content.indexOf(s) !== (slide.p.content.length-1)"></div>
+                    <div v-if="slide.p.content.indexOf(s) % 2 == 0">
+                      <div class="rounders"></div>
+                      <div class="line" v-if="slide.p.content.indexOf(s) !== (slide.p.content.length-1)"></div>
+                    </div>
+
                   </div>
 
                 </div>
+                </p>
 
-              </div>
-              </p>
-
-              <resume-button v-if="slide.component === 'resume'"></resume-button>
-            </div>
-
-            <div v-else-if="slide.subtype === 'pro-rev'" class="content">
-              <p>{{ slide.p }}</p>
-              <heading :header="slide.heading"></heading>
-              <h3>{{ slide.h3 }}</h3>
-
-              <about-button v-if="slide.component === 'about'"></about-button>
-            </div>
-
-          </div>
-
-          <div v-else-if="slide.type == 'click'" class="hero-text" @click="show(slide.classes.split(' ')[0])">
-            <div class="content seventy">
-              <heading :header="slide.heading"></heading>
-              <p>{{ slide.p }}</p>
-            </div>
-            <div class="content" id="activity">
-              <div v-for="div in slide.list">
-                <h2>{{ div.h2 }}</h2>
-                <p>{{ div.p }}</p>
+                <resume-button v-if="match(slide.component, 'resume')"></resume-button>
+                <know-button v-if="match(slide.component, 'know')"></know-button>
+                <answer-button v-if="match(slide.component, 'answer')" @click="href('h')"></answer-button>
               </div>
             </div>
+
+            <div v-else-if="match(slide.type, 'reverse')" class="content">
+              <div class="hi-there">
+                <p>{{ slide.p }}</p>
+                <heading :header="slide.heading"></heading>
+                <h3>{{ slide.h3 }}</h3>
+
+                <about-button v-if="match(slide.component, 'about')"></about-button>
+              </div>
+            </div>
+
           </div>
 
         </div>
