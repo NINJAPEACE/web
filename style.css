@@ -4,21 +4,21 @@
   --main-color: #2e8fcc;
   --white-2: #eee;
 
-  /*FONT SIZE*/
+  /* FONT SIZE */
   --heading-size: 300%;
   --subheading-size: 32px;
   --title-size: 17px;
   --subtitle-size: 13px;
 
-  /*FONT WEIGHT*/
+  /* FONT WEIGHT */
   --super-bold: 900;
   --bold: 700;
   --medium: 500;
   --thin: 300;
 
-  /*BOX SHADOW*/
+  /* BOX SHADOW */
   --hard: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --sm-dark: 0 0 5px #4E4E4E;
+  --sm-dark: 0 0 5px rgb(255, 255, 255, .1);
 }
 
 * {
@@ -78,7 +78,7 @@ body .overflow {
 }
 
 .hero-text {
-  visibility: hidden;
+  opacity: 0;
   position: relative;
   width: 100%;
   height: 90%;
@@ -133,7 +133,6 @@ body .overflow {
 }
 
 .content {
-  animation: fromZero 1s ease;
   width: 100%;
   position: absolute;
   top: 50%;
@@ -237,8 +236,16 @@ body .overflow {
   text-align: right;
 }
 
-.one-personal .know-button, .three-personal .answer-button {
-  float:right;
+.one-personal p,
+.three-personal p,
+.four-personal p,
+.five-personal p {
+  display: inline-block;
+}
+
+.one-personal .know-button,
+.three-personal .answer-button {
+  float: right;
 }
 
 /* COMPONENTS */
@@ -274,7 +281,7 @@ body .overflow {
 .resume-button:hover .span-icon,
 .about-button:hover .span-icon {
   background: rgba(255, 255, 255, .2);
-  box-shadow: 0 0 5px #787878;
+  box-shadow: 0 0 5px rgba(255, 255, 255, .2);
 }
 
 .resume-button:hover .span-icon svg {
@@ -301,7 +308,6 @@ body .overflow {
 
 .about-button:hover {
   transform: translateX(2rem);
-  box-shadow: var(--hard);
 }
 
 .about-button:hover span:nth-child(1) svg {
@@ -330,43 +336,30 @@ body .overflow {
   padding: 15px;
   background: linear-gradient(90deg, var(--main-color), #48B3F6);
   border-radius: 20px 5px 20px 5px;
-  transition:.5s;
+  transition: .5s;
   box-shadow: 0 0 5px var(--main-color);
 }
 
 .know-button:hover span {
-  background:linear-gradient(90deg, rgb(255, 255, 255, .1), rgba(255, 255, 255, .2));
+  background: linear-gradient(90deg, rgb(255, 255, 255, .1), rgba(255, 255, 255, .2));
   box-shadow: 0 0 5px #787878;
   border-radius: 3px 22px 3px 22px;
-  transform:translateX(-2rem);
+  transform: translateX(-2rem);
 }
 
 .answer-button span {
   padding: 13px;
   background: linear-gradient(9deg, var(--main-color), #48B3F6, var(--main-color));
-  border-radius: 20px 5px 20px 5px;
+  border-radius: 20px 20px 5px 5px;
   box-shadow: 0 0 5px var(--main-color);
-  transition:.5s;
+  transition: .5s;
 }
 
 .answer-button:hover span {
-  padding:17px;
-  background:linear-gradient(90deg, rgba(255, 255, 255, .2), rgb(255, 255, 255, .1), rgba(255, 255, 255, .2));
+  background: linear-gradient(90deg, rgba(255, 255, 255, .2), rgb(255, 255, 255, .1), rgba(255, 255, 255, .2));
   box-shadow: 0 0 5px #787878;
-  transform:translate(-2rem, 1rem);
-}
-
-.rounded-status {
-  width: 1rem;
-  height: 1rem;
-  background: #6CFF47;
-  box-shadow: 0 0 5px #6CFF47;
-  border-radius: 50%;
-  animation: 5s activeLoop infinite;
-  transition: .5s;
-  position: absolute;
-  left: 7%;
-  top: 10%;
+  border-radius: 5px 5px 20px 20px;
+  transform: translate(-2rem, 1rem);
 }
 
 .social {
@@ -386,7 +379,6 @@ body .overflow {
   margin: .5rem .7rem;
   background-color: rgb(255, 255, 255, 0.1);
   margin-bottom: 35px;
-  animation: fromZero 1s ease;
   transition: .5s;
 }
 
@@ -412,23 +404,6 @@ body .overflow {
 .social span:hover {
   background: var(--main-color);
   box-shadow: 0 0 5px var(--main-color);
-}
-
-.left-right {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  margin-top: 3rem;
-}
-
-.left-right h3 {
-  width: 50%;
-}
-
-.left-right h3:nth-child(even) {
-  float: right;
-  text-align: right;
-  margin-left: 50%;
 }
 
 .card {
@@ -478,7 +453,7 @@ body .overflow {
 .block-item {
   width: calc(69/100*100vw);
   height: calc(69/100*100vw);
-  border-radius: 50px;
+  border-radius: 3.5rem;
   background-color: #454545;
   box-shadow: var(--hard);
   transition: .8s;
@@ -497,6 +472,18 @@ body .overflow {
   z-index: -1;
   position: absolute;
   transform: translateX(-150%) translateY(-25%);
+}
+
+.trapesium-item {
+  width: calc(89/100*100vw);
+  height: calc(69/100*100vw);
+  border-radius: 6rem 1.5rem 6rem 1.5rem;
+  background-color: #6D6D6D;
+  box-shadow: var(--hard);
+  transition: .8s;
+  z-index: -1;
+  position: absolute;
+  transform: translate(100%, -100%) rotate(0deg);
 }
 
 /* PAGINATION */
@@ -590,16 +577,24 @@ body .overflow {
 
 @media only screen and (min-width: 600px) {
   .block-item {
-    border-radius: 150px;
+    border-radius: 9rem;
+  }
+  
+  .trapesium-item {
+    border-radius: 15rem 6rem 15rem 6rem;
   }
 
-  .hi-there h1 span {
+  .main-slide .hi-there span {
     display: block;
   }
 
   .sidebar-button {
-    width: 2rem;
+    width: 1.5rem;
     height: 5rem;
+  }
+
+  .content {
+    width: 70%;
   }
 }
 

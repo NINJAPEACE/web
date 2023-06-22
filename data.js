@@ -106,7 +106,7 @@ function data() {
         anim: "bottom",
         type: "normal",
         heading: "My $Experience$",
-        h3: "Amazing journal of",
+        h3: "Amazing journey of",
         p: {
           type: "object",
           content: [
@@ -127,7 +127,8 @@ function data() {
       ],
     items: [
       { "class": "block-item item" },
-      { "class": "round-item item" }
+      { "class": "round-item item" },
+      { "class": "trapesium-item item" }
         ],
     social: [
       { href: "https://instagram.com/ninja_peace", icon: "fa-brands fa-instagram" },

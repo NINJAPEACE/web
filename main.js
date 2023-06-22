@@ -125,7 +125,8 @@ function swipeActive(addClass) {
 
         let parallax = [
           "block-item",
-          "round-item"
+          "round-item",
+          "trapesium-item"
           ];
 
         setTimeout(() => {

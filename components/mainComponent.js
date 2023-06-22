@@ -1,7 +1,10 @@
 export { aboutButton, resumeButton, knowButton, navButton, answerButton, heading };
 
 const resumeButton = {
-  template: `<button class="resume-button no-select slide-button" type="next"><span>Resume</span><span class='span-icon'><i data-eva="arrow-forward-outline"></i></span></button>`
+  template: `<button class="resume-button no-select slide-button" type="next">
+  <span>Resume</span>
+  <span class='span-icon'><i data-eva="arrow-forward-outline"></i></span>
+  </button>`
 }
 
 const aboutButton = {
@@ -12,7 +15,7 @@ const aboutButton = {
 }
 
 const knowButton = {
-  template: `<button class="know-button no-select slide-button"><span>Know me more</span></button>`
+  template: `<button class="know-button no-select slide-button" type="prev"><span>Know me more</span></button>`
 }
 
 const answerButton = {
