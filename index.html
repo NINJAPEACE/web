@@ -8,11 +8,11 @@
 
   <!-- SEO -->
   <title>NINJA PEACE's Website</title>
-  <meta name="description" content="Personal website of NINJA PEACE, a man that called himself as a normal human, but people don't think so. Me too, btw.">
+  <meta name="description" content="Personal website of NINJA PEACE, a man that called himself as a normal human, but people don't think so. Me too, btw. But wait, who am I?">
 
   <!-- OpenGraph -->
   <meta name="og:title" property="og:title" content="NINJA PEACE's Website">
-  <meta name="og:description" property="og:description" content="Personal website of NINJA PEACE, a man that called himself as a normal human, but people don't think so. Me too, btw.">
+  <meta name="og:description" property="og:description" content="Personal website of NINJA PEACE, a man that called himself as a normal human, but people don't think so. Me too, btw. But wait, who am I?">
 
   <meta name="robots" content="index, follow">
 
@@ -29,29 +29,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://unpkg.com/eva-icons"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Modules -->
   <script src="/swiper/swiper.js"></script>
   <link rel="stylesheet" href="/swiper/swiper.css" />
+  <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
+  <script src="main.js" type="module"></script>
 </head>
 
-<body class="load" id="app">
+<body id="app">
 
-  <div class="overflow">
+  <div class="absolute bg-[rgba(0, 0, 0, 0.5)] backdrop-blur w-full h-full text-[#fff] text-2xl flex justify-center items-center z-20 data-[status=loaded]:hidden" id="overflow" data-status="load">
     <span>Loading ...</span>
   </div>
 
-  <section class="hero swiper">
+  <section class="hero swiper w-full h-full relative flex justify-center items-center bg-cover bg-center bg-gradient-to-r from-zinc-900 to-neutral-700">
 
-    <div v-for="item in items" :class="item.class">
+    <div v-for="item in items" :class="['duration-700 absolute z-[-1] shadow-2xl ' + item.class]">
       &nbsp;
     </div>
 
-    <div class="sidebar">
-      <ul>
-        <li>Home</li>
-        <li>Project</li>
-        <button @click="sidebar">
+    <div class="sidebar absolute w-full h-full top-0 bottom-0 left-0 right-0 hidden backdrop-blur-sm z-10 bg-[#00000080]">
+      <ul class="flex flex-col text-center items-center justify-center absolute top-0 bottom-0 right-0 left-0 gap-8">
+        <li v-for="list in ['Home', 'Project']" class="text-[#eee] text-2xl list-none">{{ list }}</li>
+        <button class="py-3 px-3.5 text-[#D5D5D5] rounded-2xl mt-8 duration-500 bg-[#FFFFFF1A] hover:scale-125 hover:text-[#AEAEAE] text-base border-0 outline-0" @click="sidebar">
           Close
         </button>
       </ul>
@@ -59,114 +61,23 @@
 
     <div class="swiper-wrapper">
 
-      <div v-for="slide in slides" :class="['main-width swiper-slide ' + slide.classes + ' center-xy no-select ' + slide.anim]">
-        <div class="container">
+      <div v-for="slide in slides" :class="['swiper-slide main-width ' + slide.classes + ' center-xy no-select ' + slide.anim]">
+        <div class="w-full h-full py-[25%] px-[15%]">
 
-          <div class="hero-text">
+          <div class="hero-text w-full h-[90%] relative mb-10 duration-1000 opacity-0">
 
-            <div v-if="match(slide.type, 'thanks')" class="content">
-              <h1>{{ slide.h1 }}</h1>
-              <p>
-                {{ slide.p }}
-              </p>
-              <div class="contact">
-                Follow Me
-              </div>
-              <div class="social-list">
-                <div class="social">
-                  <a v-for="element in social" :href="element.href">
-                    <i :class="element.icon"></i>
-                  </a>
-                </div>
-                <div class="social">
-                  <a class="email" href="mailto:ninjapeace95@gmail.com?subject=My Subject&body=What's up?">
-                    <span>ninjapeace95@gmail.com
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
+            <div :class="['content w-full absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] ' + slide.contentClass]">
 
-            <div v-else-if="match(slide.type, 'main')" class="content seventy">
-              <button class="sidebar-button" @click="sidebar">
-                &nbsp;
-              </button>
-              <div class="hi-there">
-                <h3>Hi, there!</h3>
-                <h1>
-                  I am&nbsp;
-                  <span class="blue">{{ name }}</span>
-                </h1>
-                <p class="h3">
-                  {{ description }}
-                </p>
-              </div>
-              <nav-button></nav-button>
-            </div>
+              <thanks v-if="match(slide.type, 'thanks')" :slide="slide" :social="social"></thanks>
 
-            <div v-else-if="match(slide.type, 'project')" class="content card-list">
-              <heading :header="slide.heading"></heading>
-              <div v-for="el in project" class="card no-select" @click="href(el.href)">
-                <div class="title">
-                  {{ el.title }}
-                </div>
-                <div class="description paragraph">
-                  {{ el.desc.length >= 30 ? el.desc.substr(0,30) + "..." : el.desc }}
-                </div>
-                <div class="complement">
-                  <span>
-                    <i :class="['fa-brands fa-' + el.icon]">
-                    </i>
-                  </span>
-                </div>
-              </div>
-            </div>
+              <main-page v-else-if="match(slide.type, 'main')" :sidebar="sidebar" :name="name" :description="description"></main-page>
 
-            <div v-else-if="match(slide.type, 'normal')" class="content">
-              <div>
-                <h3>{{ slide.h3 }}</h3>
-                <heading :header="slide.heading"></heading>
+              <project v-else-if="match(slide.type, 'project')" :href="href" :project="project" :slide="slide"></project>
 
-                <p>
-                <p v-if="match(slide.p.type, 'string')" :click="quotes" v-for="p in slide.p.content">{{ p }}</p>
-                <div v-if="match(slide.p.type, 'object')" class="content-parent">
+              <normal v-else-if="match(slide.type, 'normal')" :slide="slide" :match="match" :href="href"></normal>
 
-                  <div v-for="s in slide.p.content" class="content-list">
-                    <div v-if="slide.p.content.indexOf(s) % 2 == 1"></div>
+              <reverse v-else-if="match(slide.type, 'reverse')" :slide="slide" :match="match"></reverse>
 
-                    <div v-if="slide.p.content.indexOf(s) % 2 == 1">
-                      <div class="rounders"></div>
-                      <div class="line"></div>
-                    </div>
-
-                    <div :style="slide.p.content.indexOf(s) % 2 == 0 ? ['text-align:right'] : ['text-align:left']">
-                      <div class="content-title">{{ s }}</div>
-                    </div>
-
-                    <div v-if="slide.p.content.indexOf(s) % 2 == 0">
-                      <div class="rounders"></div>
-                      <div class="line" v-if="slide.p.content.indexOf(s) !== (slide.p.content.length-1)"></div>
-                    </div>
-
-                  </div>
-
-                </div>
-                </p>
-
-                <resume-button v-if="match(slide.component, 'resume')"></resume-button>
-                <know-button v-if="match(slide.component, 'know')"></know-button>
-                <answer-button v-if="match(slide.component, 'answer')" @click="href('h')"></answer-button>
-              </div>
-            </div>
-
-            <div v-else-if="match(slide.type, 'reverse')" class="content">
-              <div class="hi-there">
-                <p>{{ slide.p }}</p>
-                <heading :header="slide.heading"></heading>
-                <h3>{{ slide.h3 }}</h3>
-
-                <about-button v-if="match(slide.component, 'about')"></about-button>
-              </div>
             </div>
 
           </div>
@@ -175,12 +86,14 @@
       </div>
 
     </div>
+    <div class="navigation w-full flex justify-between gap-4 text-[#eee] mt-4 z-10 absolute bottom-[10%]">
+      <div v-for="nav in [{data: 'left', type: 'prev'}, {data: 'right', type: 'next'}]" :class="['slide-button ' + 'm' + nav.data[0] + '-10']" :type="nav.type" class="invisible opacity-0 translate-y-14 duration-500 data-[status=active]:visible data-[status=active]:opacity-30 data-[status=active]:translate-y-0">
+        <i :data-eva="['arrowhead-' + nav.data + '-outline']" data-eva-fill="#CACACAFC" data-eva-width="48" data-eva-height="48"></i>
+      </div>
+    </div>
     <div class="swiper-pagination pagination">
     </div>
   </section>
-
-  <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
-  <script src="main.js" type="module"></script>
 </body>
 
 </html>

@@ -5,17 +5,25 @@ const { createApp } = Vue;
 
 const appEl = document.querySelector('#app');
 
-import { resumeButton, aboutButton, knowButton, answerButton, navButton, heading } from "./components/mainComponent.js";
+import { thanks, mainPage, project, normal, reverse } from "./components/mainComponent.js";
 import { data } from "./data.js";
+
+tailwind.config = {
+  content: [
+    './index.html',
+  ],
+}
 
 const app = createApp({
   mounted: async () => {
 
-    swipeActive((a, b, remove = 1) => {
-      if (remove) {
-        document.querySelector(`.${a}`).className = `${a} item ${b}`;
-      }
-    });
+    let arr = [];
+
+    for (let x of data().slides) {
+      arr.push(x.nav);
+    }
+
+    swipeActive(arr);
 
     eva.replace();
 
@@ -39,18 +47,17 @@ const app = createApp({
       }
     });
 
-    document.body.className = "";
+    document.getElementById("overflow").setAttribute("data-status", "loaded");
 
     document.querySelector(".main-slide").setAttribute("status", "active");
   },
   data: data,
   components: {
-    resumeButton,
-    knowButton,
-    navButton,
-    aboutButton,
-    answerButton,
-    heading
+    thanks,
+    mainPage,
+    project,
+    normal,
+    reverse
   },
   methods: {
     match(a, b) {
@@ -75,7 +82,7 @@ const app = createApp({
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebar-button");
 
-      [[sidebar, "status", "active"], [sidebarBtn, "click", "true"]].forEach(async (e) => {
+      [[sidebar, "status", "active"], [sidebarBtn, "data-click", "true"]].forEach(async (e) => {
         this.setAttr(e)
       });
     }
@@ -88,7 +95,7 @@ app.config.errorHandler = (err) => {
   console.log(err)
 }
 
-function swipeActive(addClass) {
+function swipeActive(navArray) {
   if (!Swiper) return window.location.reload();
 
   swiper = new Swiper(".swiper", {
@@ -100,6 +107,13 @@ function swipeActive(addClass) {
     grabCursor: 'true',
     initialSlide: 5,
     effect: "slide",
+    keyboard: {
+      enabled: true,
+      onlyInViewport: false,
+    },
+    mousewheel: {
+      invert: true,
+    },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -121,6 +135,11 @@ function swipeActive(addClass) {
           page.setAttribute("status", "active")
         }
 
+        let y = document.querySelector(".navigation").children;
+
+        y[0].setAttribute("data-status", navArray[s.realIndex] == "left" || navArray[s.realIndex] == "both" ? "active" : "");
+        y[1].setAttribute("data-status", navArray[s.realIndex] == "right" || navArray[s.realIndex] == "both" ? "active" : "");
+
         current = { index: s.realIndex, page: page };
 
         let parallax = [
@@ -131,7 +150,7 @@ function swipeActive(addClass) {
 
         setTimeout(() => {
           for (let xy of parallax) {
-            addClass(xy, `s${s.realIndex}`);
+            document.getElementsByClassName(xy)[0].setAttribute("page", `s${s.realIndex}`)
           }
         }, 100)
 

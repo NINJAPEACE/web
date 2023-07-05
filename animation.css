@@ -1,77 +1,58 @@
 /* BLOCK ITEM */
-.block-item.s3,
-.block-item.s2,
-.block-item.s1,
-.block-item.s0 {
-  transform: translate(200%, 160%) rotate(218deg);
+.block-item[page="s4"] {
+  transform: translate(95%, 150%) rotate(173deg);
 }
 
-.block-item.s4 {
-  transform: translate(100%, 160%) rotate(38deg);
+.block-item[page="s5"] {
+  transform: translate(50%, 100%) rotate(38deg);
 }
 
-.block-item.s5 {
-  transform: translate(-50%, 160%) rotate(218deg);
+.block-item[page="s6"] {
+  transform: translate(-55%, 60%) rotate(128deg) scale(1.4);
 }
 
-.block-item.s6 {
-  transform: translate(-55%, 60%) rotate(38deg) scale(1.4);
-}
-
-.block-item.s7,
-.block-item.s8,
-.block-item.s9,
-.block-item.s10 {
+.block-item[page="s7"],
+.block-item[page="s8"],
+.block-item[page="s9"],
+.block-item[page="s10"] {
   transform: translate(-150%, 40%);
 }
 
 /* ROUND ITEM */
-.round-item.s2,
-.round-item.s1,
-.round-item.s0 {
+.round-item[page="s0"],
+.round-item[page="s1"],
+.round-item[page="s2"] {
   transform: translate(150%);
 }
 
-.round-item.s3 {
-  transform: translate(55%, 50%) scale(1.5);
+.round-item[page="s3"] {
+  transform: translate(55%, 25%) scale(1.5);
 }
 
-.round-item.s4 {
-  transform: translateX(-35%) translateY(-25%);
+.round-item[page="s4"] {
+  transform: translate(-45%, -105%);
 }
 
-.round-item.s5,
-.round-item.s6,
-.round-item.s7,
-.round-item.s8,
-.round-item.s9 {
-  transform: translate(-100%, -50%);
+.round-item[page="s5"] {
+  transform: translate(-85%, -145%);
 }
 
 /* TRAPESIUM ITEM */
-.trapesium-item.s0,
-.trapesium-item.s1,
-.trapesium-item.s2,
-.trapesium-item.s3,
-.trapesium-item.s4,
-.trapesium-item.s5 {
-  transform: translate(100%, -100%) rotate(0deg);
-}
 
-.trapesium-item.s6 {
+.trapesium-item[page="s6"] {
   transform: translate(10%, 100%) rotate(130deg);
 }
 
-.trapesium-item.s7 {
-  transform: translate(-30%, 200%) rotate(300deg);
-  opacity:.5;
+.trapesium-item[page="s7"] {
+  transform: translate(-30%, 150%) rotate(300deg) skewX(45deg);
+  opacity: .5;
 }
 
-.trapesium-item.s8,
-.trapesium-item.s9,
-.trapesium-item.s10 {
+.trapesium-item[page="s8"],
+.trapesium-item[page="s9"],
+.trapesium-item[page="s10"] {
   transform: translate(-100%, 300%) rotate(300deg);
-  opacity:0;
+  opacity: 0;
 }
 
 .up .hero-text {

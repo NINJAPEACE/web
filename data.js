@@ -10,7 +10,8 @@ function data() {
         anim: "diagonal",
         type: "thanks",
         h1: "Vielen Dank",
-        p: "For visiting my personal website. Anyway, if you would like to contact me, check out my social media below. Tschüss!"
+        p: "For visiting my personal website. Anyway, if you would like to contact me, check out my social media below. Tschüss!",
+        nav: "right"
       },
       {
         classes: "four-personal",
@@ -23,7 +24,8 @@ function data() {
           content: [
             "Yeah, my designs are weird just like me or.. maybe your relationship?"
             ]
-        }
+        },
+        nav: "both"
         },
       {
         classes: "three-personal",
@@ -34,13 +36,13 @@ function data() {
         p: {
           type: "string",
           content: [
-            "Let's predict if a guy with first speed as zero want to stop Thanos by hit him with a car.",
-            "If his car is actually his grandfather's, and this car has 100 kg mass which can accelerate by 5 m/s and this guy is 100 meters long from Thanos,",
+            "Let's predict if a guy with first speed as zero want to stop Thanos by hit him with a car. If his car is actually his grandfather's, and this car has 100 kg mass which can accelerate by 5 m/s and this guy is 100 meters long from Thanos,",
             "then how much time does he need to crash Thanos, and how big is the momentum?"
-            ]
+            ],
         },
         component: "answer",
-        href: "https://ninjapeace.vercel.app/science"
+        href: "https://ninjapeace.vercel.app/science",
+        nav: "both"
         },
       {
         classes: "two-personal",
@@ -56,6 +58,7 @@ function data() {
             "Story Writing"
             ]
         },
+        nav: "both"
         },
       {
         classes: "one-personal",
@@ -69,9 +72,15 @@ function data() {
             "A high-schooler and just a normal human. I like science, math, and psychology."
             ]
         },
-        component: "know"
+        component: "know",
+        nav: "right"
         },
-      { classes: "main-slide no-select", anim: "up", type: "main" },
+      {
+        classes: "main-slide no-select",
+        contentClass: "seventy",
+        anim: "up",
+        type: "main",
+      },
       {
         classes: "one-professional",
         anim: "up",
@@ -84,7 +93,8 @@ function data() {
             "A self-taught programmer and visual designer. I like to code and design, they coloured my life."
             ]
         },
-        component: "resume"
+        component: "resume",
+        nav: "left"
         },
       {
         classes: "two-professional",
@@ -92,14 +102,17 @@ function data() {
         type: "reverse",
         heading: "Specialist $Creative$",
         h3: " ",
-        p: "I ama programmer and UI/UX designer.",
-        component: "about"
+        p: "I am programmer and UI/UX designer.",
+        component: "about",
+        nav: "left"
         },
       {
         classes: "three-professional",
+        contentClass: "card-list",
         anim: "right",
         type: "project",
-        heading: "My $Works$ and $Creativity$"
+        heading: "My $Works$ and $Creativity$",
+        nav: "both"
         },
       {
         classes: "four-professional",
@@ -115,14 +128,16 @@ function data() {
             "Frontend Web Developer"
             ]
         },
-        component: "hire"
+        component: "hire",
+        nav: "both"
         },
       {
         classes: "five-professional",
         anim: "diagonal",
         type: "thanks",
         h1: "Thank You",
-        p: "For all honoured people that helped me in every particular things, and thank you for visiting this website!"
+        p: "For all honoured people that helped me in every particular things, and thank you for visiting this website!",
+        nav: "left"
       }
       ],
     items: [
