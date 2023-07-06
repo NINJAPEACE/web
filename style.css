@@ -84,16 +84,11 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.content.seventy {
-  width: 70%;
-  text-align: center;
-}
-
 .content-list {
   display: grid;
   grid-template-columns: 1fr max-content 1fr;
   column-gap: 1.5rem;
-  columns:3;
+  columns: 3;
   -moz-column-gap: 1.5rem;
   -webkit-column-gap: 1.5rem;
 }
@@ -104,6 +99,7 @@ body {
   height: 13px;
   border-radius: 50%;
   background: var(--main-color);
+  transition: .5s;
 }
 
 .line {
@@ -122,29 +118,17 @@ body {
   -webkit-transition-duration: .5s;
 }
 
+.content-parent:hover .rounders {
+  background: none;
+  border: 3px solid var(--main-color);
+}
+
 .content-parent:hover .line {
   transform: translate(6px, 7px);
   -o-transform: translate(6px, 7px);
   -ms-transform: translate(6px, 7px);
   -moz-transform: translate(6px, 7px);
   -webkit-transform: translate(6px, 7px);
-}
-
-/* MAIN SLIDE */
-.personal-button:hover {
-  transform: translateX(-2rem);
-  -o-transform: translateX(-2rem);
-  -ms-transform: translateX(-2rem);
-  -moz-transform: translateX(-2rem);
-  -webkit-transform: translateX(-2rem);
-}
-
-.professional-button:hover {
-  transform: translateX(2rem);
-  -o-transform: translateX(2rem);
-  -ms-transform: translateX(2rem);
-  -moz-transform: translateX(2rem);
-  -webkit-transform: translateX(2rem);
 }
 
 /* ANOTHER SLIDE */
@@ -226,7 +210,7 @@ body {
   background-color: var(--main-color);
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 768px) {
   .block-item {
     border-radius: 9rem;
   }
@@ -239,14 +223,7 @@ body {
     display: block;
   }
 
-  .sidebar-button {
-    width: 1.5rem;
-    height: 5rem;
-  }
-
   .content {
     width: 70%;
   }
 }
-
-@media only screen and (min-width: 768px) {}

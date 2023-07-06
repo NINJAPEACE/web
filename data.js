@@ -77,7 +77,7 @@ function data() {
         },
       {
         classes: "main-slide no-select",
-        contentClass: "seventy",
+        contentClass: "text-center w-[70%]",
         anim: "up",
         type: "main",
       },
@@ -154,14 +154,14 @@ function data() {
       {
         id: "DCB",
         title: "Discord-Counting-Bot",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: "Make a counting bot by yourself!",
         icon: "github",
         href: "https://github.com/NINJAPEACE/Discord-Counting-Bot"
       },
       {
         id: "DJS-13",
         title: "DiscordJS-v13",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: "Tutorial for discord bot programming using discord.js v13",
         icon: "github",
         href: "https://github.com/NINJAPEACE/Discordjs-v13"
       }

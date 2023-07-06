@@ -1,17 +1,16 @@
 export { thanks, mainPage, project, normal, reverse };
 
 const resumeButton = {
-  template: `<button class="resume-button button no-select slide-button" type="next">
+  template: `<button class="group/resume button no-select slide-button gap-3 hover:p-5 hover:shadow-[0_0_5px_#2e8fcc] hover:bg-gradient-to-r hover:from-sky-400 hover:to-blue-700" type="next">
   <span>Resume</span>
-  <span class='span-icon'><i data-eva="arrow-forward-outline"></i></span>
+  <span class='duration-500 group-hover/resume:rotate-[-90deg]'><i data-eva="arrow-ios-downward"></i></span>
   </button>`
 }
 
 const aboutButton = {
-  template: `<button class="about-button button no-select slide-button" type="next">
-                <span class='span-icon'><i data-eva="arrow-ios-downward-outline"></i></span>
-                <span>More about me</span>
-              </button>`
+  template: `<button class="group/about button no-select slide-button text-[#000] py-3 px-4 rounded-3xl bg-stone-100 hover:shadow-[0_0_5px_#2e8fcc] hover:bg-transparent hover:text-[#2e8fcc]" type="next">
+      More about m<span class="duration-700 origin-bottom group-hover/about:rotate-[360deg]">e</span>
+  </button>`
 }
 
 const knowButton = {
@@ -28,10 +27,10 @@ const answerButton = {
 
 const navButton = {
   template: `<div class="flex w-full justify-between gap-4 text-[#eee] mt-4 z-10">
-  <div v-for="button in [{name: 'Personal', type: 'prev', direction: 'left'}, {name: 'Professional', type: 'next', direction: 'right'}]" :class="['slide-button flex flex-col gap-4 duration-700 ' + button.name.toLowerCase() + '-button']" :type="button.type">
-      <i class="fa-solid fa-chevron-left" v-if="button.type == 'prev'"></i>
+  <div v-for="button in [{name: 'Personal', type: 'prev', direction: 'left', classes: 'personal-button hover:translate-x-[-2rem]'}, {name: 'Professional', type: 'next', direction: 'right', classes: 'professional-button hover:translate-x-8'}]" :class="['slide-button flex flex-col gap-4 duration-700 text-center justify-center items-center ' + button.classes]" :type="button.type">
+      <i data-eva="arrow-ios-back" data-eva-fill="#eee" v-if="button.type == 'prev'"></i>
       <span>{{ button.name }}</span>
-      <i class="fa-solid fa-chevron-right" v-if="button.type == 'next'"></i>
+      <i data-eva="arrow-ios-forward" data-eva-fill="#eee" v-if="button.type == 'next'"></i>
   </div>
  </div>`
 }
@@ -123,41 +122,41 @@ const normal = {
     heading
   },
   template: `<h3>{{ slide.h3 }}</h3>
-                <heading :header="slide.heading"></heading>
-               
-               <div v-if="match(slide.p.type, 'string')">
-                <p v-for="p in slide.p.content">
-                 {{ slide.p.content.indexOf(p) == 1 ? '...' : slide.p.content.indexOf(p) == 0 ? slide.p.content.find(e => e == p) : "" }}
-                </p>
-               </div>
+<heading :header="slide.heading"></heading>
 
-                <div v-if="match(slide.p.type, 'object')" class="content-parent flex flex-col justify-evenly duration-500">
-               
-                  <div v-for="s in slide.p.content" class="content-list">
-                    <div v-if="slide.p.content.indexOf(s) % 2 == 1"></div>
+<div v-if="match(slide.p.type, 'string')">
+  <p v-for="p in slide.p.content">
+    {{ slide.p.content.indexOf(p) == 1 ? '...' : slide.p.content.indexOf(p) == 0 ? slide.p.content.find(e => e == p) : "" }}
+  </p>
+</div>
 
-                    <div v-if="slide.p.content.indexOf(s) % 2 == 1">
-                      <div class="rounders"></div>
-                      <div class="line"></div>
-                    </div>
+<div v-if="match(slide.p.type, 'object')" class="content-parent flex flex-col justify-evenly duration-500">
 
-                    <div :style="slide.p.content.indexOf(s) % 2 == 0 ? ['text-align:right'] : ['text-align:left']">
-                      <div class="text-[#eee] text-base">{{ s }}</div>
-                    </div>
-                    
-                    <div v-if="slide.p.content.indexOf(s) % 2 == 0">
-                      <div class="rounders"></div>
-                      <div class="line" v-if="slide.p.content.indexOf(s) !== (slide.p.content.length-1)"></div>
-                    </div>
+  <div v-for="s in slide.p.content" class="content-list">
+    <div v-if="slide.p.content.indexOf(s) % 2 == 1"></div>
 
-                  </div>
+    <div v-if="slide.p.content.indexOf(s) % 2 == 1">
+      <div class="rounders"></div>
+      <div class="line"></div>
+    </div>
 
-                </div>
+    <div :style="slide.p.content.indexOf(s) % 2 == 0 ? ['text-align:right;'] : ['text-align:left;']">
+      <div class="text-[#eee] text-base">{{ s }}</div>
+    </div>
+
+    <div v-if="slide.p.content.indexOf(s) % 2 == 0">
+      <div class="rounders"></div>
+      <div class="line" v-if="slide.p.content.indexOf(s) !== (slide.p.content.length-1)"></div>
+    </div>
+
+  </div>
+
+</div>
 
 
-                <resume-button v-if="match(slide.component, 'resume')"></resume-button>
-                <know-button v-if="match(slide.component, 'know')"></know-button>
-                <answer-button v-if="match(slide.component, 'answer')" @click="href('h')"></answer-button>`
+<resume-button v-if="match(slide.component, 'resume')"></resume-button>
+<know-button v-if="match(slide.component, 'know')"></know-button>
+<answer-button v-if="match(slide.component, 'answer')" @click="href('h')"></answer-button>`
 }
 
 const reverse = {

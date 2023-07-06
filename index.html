@@ -87,8 +87,8 @@
 
     </div>
     <div class="navigation w-full flex justify-between gap-4 text-[#eee] mt-4 z-10 absolute bottom-[10%]">
-      <div v-for="nav in [{data: 'left', type: 'prev'}, {data: 'right', type: 'next'}]" :class="['slide-button ' + 'm' + nav.data[0] + '-10']" :type="nav.type" class="invisible opacity-0 translate-y-14 duration-500 data-[status=active]:visible data-[status=active]:opacity-30 data-[status=active]:translate-y-0">
-        <i :data-eva="['arrowhead-' + nav.data + '-outline']" data-eva-fill="#CACACAFC" data-eva-width="48" data-eva-height="48"></i>
+      <div v-for="nav in [{data: 'left', type: 'prev'}, {data: 'right', type: 'next'}]" :class="['slide-button ' + 'm' + nav.data[0] + '-10']" :type="nav.type" class="group/nav invisible opacity-0 translate-y-14 duration-500 data-[status=active]:visible data-[status=active]:opacity-30 data-[status=active]:translate-y-0">
+        <i :data-eva="['arrowhead-' + nav.data + '-outline']" data-eva-fill="#CACACAFC" data-eva-width="48" data-eva-height="48" class="duration-500 group-hover/nav:fill-[#2e8fcc]"></i>
       </div>
     </div>
     <div class="swiper-pagination pagination">
