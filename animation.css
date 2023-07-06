@@ -98,7 +98,7 @@
   }
   
   .trapesium-item[page="s7"] {
-    transform: translate(-30%, 100%) rotate(300deg) skewX(45deg);
+    transform: translate(-30%, 69%) rotate(300deg) skewX(45deg);
     opacity: .5;
   }
   
